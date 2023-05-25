@@ -2,9 +2,11 @@
 This project is a to-do app developed as part of "The Odin Project" JavaScript curriculum. The app allows users to manage and organize tasks.
 
 ## Features
-- Users can add new tasks with a title and an optional deadline.
+- Users can add new tasks with a title, description and an optional deadline.
 - Users can mark tasks as completed.
 - Users can edit tasks to update the title or deadline.
+- Users can change priority status.
+- Users can include notes.
 - Users can delete tasks.
 - The app stores tasks in the browser's localStorage, preserving them even after page refresh.
 

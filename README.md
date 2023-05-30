@@ -1,4 +1,7 @@
+*** Under Construction ***
+
 # To-Do App
+
 This project is a to-do app developed as part of "The Odin Project" JavaScript curriculum. The app allows users to manage and organize tasks.
 
 ## Features
@@ -9,13 +12,6 @@ This project is a to-do app developed as part of "The Odin Project" JavaScript c
 - Users can include notes.
 - Users can delete tasks.
 - The app stores tasks in the browser's localStorage, preserving them even after page refresh.
-
-## Installation
-- Clone this repository to your local machine.
-- Navigate to the project directory in your terminal.
-- Run the npm install command to install all dependencies.
-- Use the npm run build command to bundle the project with Webpack.
-- Open the index.html file in your favorite web browser.
 
 ## Technologies
 - JavaScript

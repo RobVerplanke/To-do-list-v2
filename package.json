@@ -1,0 +1,27 @@
+{
+  "name": "to-do-list-v2",
+  "version": "1.0.0",
+  "description": "This project is a to-do app developed as part of \"The Odin Project\" JavaScript curriculum. The app allows users to manage and organize tasks.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobusV/To-do-list-v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobusV/To-do-list-v2/issues"
+  },
+  "homepage": "https://github.com/RobusV/To-do-list-v2#readme",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1"
+  }
+}

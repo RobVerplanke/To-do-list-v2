@@ -167,9 +167,17 @@ hr{
     width: 15px;
 }
 
+.task-checkbox{
+    margin-right: 10px;
+}
+
 .task-text{
     width: 100%;
     margin-left: 10px;
+}
+
+.task-title{
+    font-weight: 700;
 }
 
 .task-description{

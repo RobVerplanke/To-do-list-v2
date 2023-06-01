@@ -72,6 +72,7 @@ hr{
 #content-container{
     display: grid;
     grid-template-columns: var(--nav-width) auto;
+    overflow-y: hidden;
 
     font-family: 'Quicksand', sans-serif;
     color: var(--text-color);
@@ -155,7 +156,7 @@ hr{
 
 #main-content{
     margin-top: 50px;
-    width: 30vw;
+    width: 40vw;
 }
 
 #tasks{

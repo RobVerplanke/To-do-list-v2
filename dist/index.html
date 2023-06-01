@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>The Task Terminator</title>
 </head>
 <body>
     <header id="header">
-        <div id="header-logo">logo</div>
-        <div id="header-title">title</div>
+        <div id="header-logo">
+            <img src="./img/logo.png" alt="The Task Terminator logo">
+        </div>
+        <div id="header-title"><h1>The Task Terminator</h1></div>
     </header>
 
     <div id="content-container">
@@ -22,6 +26,11 @@
         </main>
     </div>
 
-    <footer id="footer">footer</footer>
+    <footer id="footer">
+        <p>Created by Rob Verplanke</p>
+        <a href="https://github.com/RobVerplanke" target="_blank">
+            <ion-icon name="logo-github"></ion-icon>
+        </a>
+    </footer>
 </body>
 </html>

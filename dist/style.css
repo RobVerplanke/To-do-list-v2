@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
 /* Custom properties */
 
 :root{
 --header-backgroundcolor: #497174;
---header-height: 80px;
+--header-height: 160px;
 
---content-container-height: 100%;
 --main-backgroundcolor: #EFF5F5;
 --nav-backgroundcolor: #D6E4E5;
---nav-width: 240px;
+--nav-width: 260px;
 
 --footer-backgroundcolor: #497174;
 --footer-height: 40px;
+
+--text-color: #333;
 
 }
 
@@ -29,25 +33,42 @@ body{
     grid-template-rows: var(--header-height) auto var(--footer-height);
 }
 
+h1{
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+}
+
 
 /* Layout */
 
 #header{
     display: grid;
-    grid-template-columns: 40px auto;
+    grid-template-columns: var(--nav-width) auto;
 
     background-color: var(--header-backgroundcolor);
+}
+
+#header-logo{
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 #content-container{
     display: grid;
     grid-template-columns: var(--nav-width) auto;
+
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text-color);
 }
 
 #nav{
     background-color: var(--nav-backgroundcolor);
     height: 100%;
 
+    z-index: 10;
+    box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.2);
 }
 
 #main{
@@ -56,9 +77,29 @@ body{
 }
 
 #footer{
-    height: var(--footer-height);
     background-color: var(--footer-backgroundcolor);
+    color: var(--nav-backgroundcolor);
+    font-family: 'Quicksand', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 /* Elements */
+
+#header-title{
+    font-family: 'Gugi', cursive;
+    color: var(--nav-backgroundcolor);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer a{
+    color: var(--main-backgroundcolor);
+    margin-left: 10px;
+    margin-top: 3px;
+}

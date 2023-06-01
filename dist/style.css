@@ -14,6 +14,7 @@
 --footer-backgroundcolor: #497174;
 --footer-height: 40px;
 
+--accent-color: #EB6440;
 --text-color: #333;
 
 }
@@ -37,6 +38,16 @@ h1{
     padding: 0;
     margin: 0;
     font-size: 4rem;
+}
+
+h3, p{
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+hr{
+    border-top: solid 1px #bbb;
 }
 
 
@@ -96,6 +107,34 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#nav-main-options{
+    list-style: none;
+    margin: 15px;
+    padding: 0;
+}
+
+#nav-main-options li{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.task-icon{
+    width:25px;
+    color: var(--accent-color);
+}
+
+.task-title{
+    flex: 1;
+    margin-left: 5px;
+}
+
+.task-count{
+    color: #999;
 }
 
 #footer a{

@@ -50,7 +50,9 @@ h3, p{
 }
 
 hr{
-    border-top: solid 1px #bbb;
+    border: none;
+    margin: 0;
+    border-bottom: solid 1px #bbb;
 }
 
 

@@ -126,7 +126,7 @@ hr{
     align-items: end;
 }
 
-#nav-main-options, #nav-categories, #nav-add, #tasks{
+#nav-main-options, #nav-categories, #nav-add, .task{
     list-style: none;
     margin: 15px;
     padding: 0;
@@ -159,9 +159,10 @@ hr{
     width: 40vw;
 }
 
-#tasks{
+.task{
     display: flex;
     flex-direction: row;
+    width: 500px;
 }
 
 .task-checkbox, .task-edit, .task-delete{

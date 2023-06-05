@@ -1,1 +1,1 @@
-console.log('test');
+(()=>{"use strict";console.log("todo.js log"),console.log("ui.js log")})();

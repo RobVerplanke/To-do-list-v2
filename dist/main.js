@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("todo.js log"),console.log("ui.js log")})();
+(()=>{"use strict";const t=new class{constructor(t,s,o,e,i){this.title=t,this.description=s,this.note=o,this.prioStatus=e,this.date=i}}("Test to-do task","just for testing","note",!1,"date");console.log(t)})();

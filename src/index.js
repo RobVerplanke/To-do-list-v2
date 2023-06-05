@@ -1,5 +1,4 @@
-import todoTest from './modules/todo';
-import uiTest from './modules/ui';
+import Task from './modules/todo';
 
-todoTest();
-uiTest();
+const newTask = new Task('Test to-do task', 'just for testing', 'note', false, 'date');
+console.log(newTask);

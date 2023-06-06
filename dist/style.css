@@ -164,7 +164,7 @@ hr{
 .task{
     display: flex;
     flex-direction: row;
-    width: 500px;
+    width: 38vw;
 }
 
 .task-checkbox, .task-edit, .task-delete{

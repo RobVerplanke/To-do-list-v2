@@ -1,4 +1,8 @@
 import printTasks from './modules/ui';
 
-// Load tasks
+function addEventListeners() {
+  // add event listener to each navigation item
+}
+
+// Initially load all tasks
 printTasks();

@@ -12,21 +12,18 @@ class Task {
   }
 }
 
-// Create an object for every task in the storage array
-function convertToObject() {
+// Return all tasks as objects
+function getAllObjects() {
   const tasks = getAllTasks();
   const taskObjects = [];
 
+  // Create an object for each task in the storage array
   tasks.forEach((task) => {
-    const taskObject = new Task(task[0], task[1], task[2], task[3], task[4], task[5], task[6]);
+    const taskObject = new Task(...task);
     taskObjects.push(taskObject);
   });
 
   return taskObjects;
-}
-
-function getAllObjects() {
-  return convertToObject();
 }
 
 export default getAllObjects;

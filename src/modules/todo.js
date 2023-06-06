@@ -1,3 +1,4 @@
+import { isToday, isThisWeek } from 'date-fns';
 import { getAllTasks } from './storage';
 
 class Task {
@@ -13,7 +14,7 @@ class Task {
 }
 
 // Return all tasks as objects
-function getAllObjects() {
+function convertAllTasks() {
   const tasks = getAllTasks();
   const taskObjects = [];
 
@@ -26,4 +27,24 @@ function getAllObjects() {
   return taskObjects;
 }
 
-export default getAllObjects;
+function filterTasks(condition){
+  const taskList = convertAllTasks();
+  const tasksFiltered = taskList.filter(condition);
+  return tasksFiltered;
+}
+
+function getTodaysTasks() {
+  return filterTasks((task) => isToday(task.date));
+}
+
+function getThisWeeksTasks() {
+  return filterTasks((task) => isThisWeek(task.date));
+}
+
+function getImportantTasks() {
+  return filterTasks((task) => task.prioStatus === true);
+}
+
+export {
+  convertAllTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks,
+};

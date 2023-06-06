@@ -4,7 +4,9 @@
   "description": "This project is a to-do app developed as part of \"The Odin Project\" JavaScript curriculum. The app allows users to manage and organize tasks.",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js --open"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,8 @@
     "eslint-plugin-import": "^2.27.5",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
   }
 }

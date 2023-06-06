@@ -1,4 +1,4 @@
-import getAllObjects from './todo';
+import { convertAllTasks } from './todo';
 
 // A function for creating elements to prevent repetition
 function createListElement(type, className) {
@@ -10,7 +10,7 @@ function createListElement(type, className) {
 // Display tasks in the main area
 export default function printTasks() {
   // import all tasks as objects
-  const tasks = getAllObjects();
+  const tasks = convertAllTasks();
 
   const mainContent = document.querySelector('#main-content');
   const hr = document.createElement('hr');

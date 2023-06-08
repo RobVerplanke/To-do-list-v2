@@ -1,10 +1,8 @@
-// handle click events
-
+import { getAllElements } from './ui';
 import { 
   getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
 } from './todo';
-import { getAllElements } from './ui';
 
 
 function addEventListeners() {

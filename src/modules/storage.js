@@ -12,7 +12,6 @@ const tasks = [
     ['Hobbies', 'Koken', 'Probeer een nieuw recept uit', 'Mexicaanse tacos', false, '2023-09-10', false]
   ];
      
-
 function getAllArrayTasks() {
   return tasks;
 }

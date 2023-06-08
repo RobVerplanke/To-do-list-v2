@@ -5,12 +5,19 @@ function createListElement(type, className) {
   return listItem;
 }
 
+// Show number of tasks on each button
+function setTaskCounter(numberOfTasks){
+  const taskCounter = document.querySelector('#task-count');
+  taskCounter.innerHTML = numberOfTasks;
+}
+
 // Reset content area
 function clearMainContent(){
   const mainContent = document.querySelector('#main-content');
   mainContent.innerHTML = "";
 }
 
+// Reset title
 function setTitle(title){
   const mainTitle = document.querySelector('#main-title');
     mainTitle.innerHTML = title;
@@ -48,7 +55,6 @@ function printTasks(selectedObjects) {
   const tasks = selectedObjects;
 
   const mainContent = document.querySelector('#main-content');
-  const hr = document.createElement('hr');
   
   tasks.forEach((task) => {
     // Create all elements
@@ -76,8 +82,9 @@ function printTasks(selectedObjects) {
     taskItem.append(taskCheckboxHolder, taskTextHolder, taskEditButton, taskDeleteButton);
 
     // Add list element to main area and add a horizontal line to visually divide the tasks
+    const hr = document.createElement('hr');
     mainContent.append(taskItem, hr);
   });
 }
 
-export { printTasks, clearMainContent, setTitle, getAllElements };
+export { printTasks, clearMainContent, setTitle, setTaskCounter, getAllElements };

@@ -1,6 +1,6 @@
 import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
-import { clearMainContent, printTasks, setTitle } from './ui';
+import { clearMainContent, printTasks, setTitle, setTaskCounter } from './ui';
 
 class Task {
   constructor(category, title, description, note, prioStatus, date, completed) {
@@ -73,7 +73,7 @@ function getImportantTasks() {
  
  function getSportsTasks(){
   clearMainContent();
-  setTitle('Household');
+  setTitle('Sports');
   printTasks(filterTasks((task) => task.category === 'Sports'));
  }
  

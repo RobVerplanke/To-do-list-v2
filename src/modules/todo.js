@@ -1,6 +1,6 @@
 import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
-import { clearMainContent, printTasks } from './ui';
+import { clearMainContent, printTasks, setTitle } from './ui';
 
 class Task {
   constructor(category, title, description, note, prioStatus, date, completed) {
@@ -37,41 +37,49 @@ function filterTasks(condition){
 
 function getAllObjectTasks(){
   clearMainContent();
+  setTitle('All tasks');
   printTasks(convertAllTasks());
 }
 
 function getTodaysTasks() {
   clearMainContent();
+  setTitle('Todays tasks');
   printTasks(filterTasks((task) => isToday(parseISO(task.date))));
 }
 
 function getThisWeeksTasks() {
   clearMainContent();
+  setTitle('This weeks tasks');
   printTasks(filterTasks((task) => isThisWeek(parseISO(task.date))));
 }
 
 function getImportantTasks() {
   clearMainContent();
+  setTitle('Important tasks');
   printTasks(filterTasks((task) => task.prioStatus === true));
 }
 
  function getProjectsTasks(){
   clearMainContent();
+  setTitle('Projects');
   printTasks(filterTasks((task) => task.category === 'Projects'));
  }
 
  function getHouseholdTasks(){
   clearMainContent();
+  setTitle('Household');
   printTasks(filterTasks((task) => task.category === 'Household'));
  }
  
  function getSportsTasks(){
   clearMainContent();
+  setTitle('Household');
   printTasks(filterTasks((task) => task.category === 'Sports'));
  }
  
  function getHobbiesTasks(){
   clearMainContent();
+  setTitle('Hobbies');
   printTasks(filterTasks((task) => task.category === 'Hobbies'));
  }
 

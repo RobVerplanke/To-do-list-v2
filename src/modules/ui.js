@@ -5,9 +5,15 @@ function createListElement(type, className) {
   return listItem;
 }
 
+// Reset content area
 function clearMainContent(){
   const mainContent = document.querySelector('#main-content');
   mainContent.innerHTML = "";
+}
+
+function setTitle(title){
+  const mainTitle = document.querySelector('#main-title');
+    mainTitle.innerHTML = title;
 }
 
 // Display tasks in the main area
@@ -48,4 +54,4 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { printTasks, clearMainContent };
+export { printTasks, clearMainContent, setTitle };

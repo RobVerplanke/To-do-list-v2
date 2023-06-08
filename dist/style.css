@@ -93,7 +93,7 @@ hr{
 #main{
     background-color: var(--main-backgroundcolor);
     height: 100%;
-    padding: 20px 0 0 100px;
+    padding: 50px 0 0 100px;
 }
 
 #footer{
@@ -154,6 +154,11 @@ hr{
 
 .task-count, .cat-count{
     color: var(--light-text-color);
+}
+
+#main-title{
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 #main-content{

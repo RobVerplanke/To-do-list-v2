@@ -28,6 +28,7 @@ function deleteTask() {
   // delete task
 }
 
+
 export {
   getAllArrayTasks, editTask, addTask, deleteTask,
 };

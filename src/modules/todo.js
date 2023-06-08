@@ -2,6 +2,7 @@ import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
 import { clearMainContent, printTasks, setTitle, setTaskCounter } from './ui';
 
+// The task object
 class Task {
   constructor(category, title, description, note, prioStatus, date, completed) {
     this.category = category;
@@ -14,12 +15,12 @@ class Task {
   }
 }
 
-// Return all tasks as objects
+// Return all the tasks in the storage array (./storage.js) as objects so we can work with them
 function convertAllTasks() {
   const tasks = getAllArrayTasks();
   const taskObjects = [];
   
-  // Create an object for each task in the storage array
+  // Create an object for each task
   tasks.forEach((task) => {
     const taskObject = new Task(...task);
     taskObjects.push(taskObject);
@@ -28,18 +29,12 @@ function convertAllTasks() {
   return taskObjects;
 }
 
+// Filter all the task objects for the given condition and return only the selected tasks
 function filterTasks(condition){
   const today = new Date();
   const taskList = convertAllTasks();
   const tasksFiltered = taskList.filter(condition);
   return tasksFiltered;
-}
-
-function countFilteredTasks(condition){
-  const today = new Date();
-  const taskList = convertAllTasks();
-  const tasksFiltered = taskList.filter(condition);
-  return tasksFiltered.length;
 }
 
 // Get number of tasks for each category
@@ -92,7 +87,7 @@ function getNumberOfHobbiesTasks() {
 }
 
 
-// Get tasks
+// Display the content of the selected tasks
 
 function getAllObjectTasks(){
   clearMainContent();
@@ -141,6 +136,7 @@ function getImportantTasks() {
   setTitle('Hobbies');
   printTasks(filterTasks((task) => task.category === 'Hobbies'));
  }
+
 
 export { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,

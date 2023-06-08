@@ -10,25 +10,25 @@ function createListElement(type, className) {
   return listItem;
 }
 
-// Show number of tasks on each button
-function setTaskCounter(numberOfTasks, counterID){
-  const taskCounter = document.querySelector(counterID);
-  taskCounter.innerHTML = numberOfTasks;
-}
-
 // Reset content area
 function clearMainContent(){
   const mainContent = document.querySelector('#main-content');
   mainContent.innerHTML = "";
 }
 
-// Reset title
+// Set the title of the task list
 function setTitle(title){
   const mainTitle = document.querySelector('#main-title');
-    mainTitle.innerHTML = title;
+  mainTitle.innerHTML = title;
 }
 
+// Show the number of tasks at the end of each button
+function setTaskCounter(numberOfTasks, counterID){
+  const taskCounter = document.querySelector(counterID);
+  taskCounter.innerHTML = numberOfTasks;
+}
 
+// Select each task counter and update it
 function setAllTaskCounters() {
   const counterAll = document.querySelector('#task-count-all');
   const counterToday = document.querySelector('#task-count-today');
@@ -40,6 +40,7 @@ function setAllTaskCounters() {
   const counterSports = document.querySelector('#task-count-sports');
   const counterHobbies = document.querySelector('#task-count-hobbies');
 
+  // Update the counter as soon as the page is loaded
   counterAll.addEventListener("load", setTaskCounter(getNumberOfAllTasks(), '#task-count-all'));
   counterToday.addEventListener("load", setTaskCounter(getNumberOfTodaysTasks(), '#task-count-today'));
   counterWeek.addEventListener("load", setTaskCounter(getNumberOfThisWeeksTasks(), '#task-count-week'));
@@ -51,6 +52,7 @@ function setAllTaskCounters() {
   counterHobbies.addEventListener("load", setTaskCounter(getNumberOfHobbiesTasks(), '#task-count-hobbies'));
 }
 
+// Load and return all elements needed for the navigation buttons
 function getAllElements(){
   const optionAll = document.querySelector('#options-all');
   const optionToday = document.querySelector('#options-today');
@@ -114,5 +116,6 @@ function printTasks(selectedObjects) {
     mainContent.append(taskItem, hr);
   });
 }
+
 
 export { printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };

@@ -1,7 +1,8 @@
-import { printTasks } from './modules/ui';
 import { getAllObjectTasks } from './modules/todo';
 import { addEventListeners } from './modules/nav';
 
-// Initially load all tasks
-// printTasks(getAllObjectTasks());
+// Initially display all tasks
+getAllObjectTasks();
+
+// Make navigation buttons clickable
 addEventListeners();

@@ -16,6 +16,32 @@ function setTitle(title){
     mainTitle.innerHTML = title;
 }
 
+function getAllElements(){
+  const optionAll = document.querySelector('#options-all');
+  const optionToday = document.querySelector('#options-today');
+  const optionWeek = document.querySelector('#options-week');
+  const optionPrio = document.querySelector('#options-prio');
+
+  const catProjects = document.querySelector('#cat-projects');
+  const catHousehold = document.querySelector('#cat-household');
+  const catSports = document.querySelector('#cat-sports');
+  const catHobbies = document.querySelector('#cat-hobbies');
+
+  const addButton = document.querySelector('#nav-add-button');
+
+  return {
+    optionAll,
+    optionToday,
+    optionWeek,
+    optionPrio,
+    catProjects,
+    catHousehold,
+    catSports,
+    catHobbies,
+    addButton,
+  };
+}
+
 // Display tasks in the main area
 function printTasks(selectedObjects) {
   // import all tasks as objects
@@ -54,4 +80,4 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { printTasks, clearMainContent, setTitle };
+export { printTasks, clearMainContent, setTitle, getAllElements };

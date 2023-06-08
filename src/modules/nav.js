@@ -1,6 +1,7 @@
 // handle click events
 
-import { getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks } from './todo';
+import { getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks } from './todo';
 
 // Get al navigation buttons
   const optionAll = document.querySelector('#options-all');
@@ -21,6 +22,11 @@ function addEventListeners() {
   optionToday.addEventListener("click", getTodaysTasks);
   optionWeek.addEventListener("click", getThisWeeksTasks);
   optionPrio.addEventListener("click", getImportantTasks);
+
+  catProjects.addEventListener("click", getProjectsTasks);
+  catHousehold.addEventListener("click", getHouseholdTasks);
+  catSports.addEventListener("click", getSportsTasks);
+  catHobbies.addEventListener("click", getHobbiesTasks);
 }
 
 export { addEventListeners };

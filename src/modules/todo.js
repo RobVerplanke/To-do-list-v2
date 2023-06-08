@@ -55,6 +55,26 @@ function getImportantTasks() {
   printTasks(filterTasks((task) => task.prioStatus === true));
 }
 
+ function getProjectsTasks(){
+  clearMainContent();
+  printTasks(filterTasks((task) => task.category === 'Projects'));
+ }
+
+ function getHouseholdTasks(){
+  clearMainContent();
+  printTasks(filterTasks((task) => task.category === 'Household'));
+ }
+ 
+ function getSportsTasks(){
+  clearMainContent();
+  printTasks(filterTasks((task) => task.category === 'Sports'));
+ }
+ 
+ function getHobbiesTasks(){
+  clearMainContent();
+  printTasks(filterTasks((task) => task.category === 'Hobbies'));
+ }
+
 export {
-  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks,
+  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks
 };

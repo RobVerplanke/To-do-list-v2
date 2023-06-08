@@ -152,7 +152,7 @@ hr{
     margin-left: 5px;
 }
 
-.task-count, .cat-count{
+.task-counter{
     color: var(--light-text-color);
 }
 

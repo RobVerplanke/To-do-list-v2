@@ -1,3 +1,8 @@
+import { 
+  getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
+  getNumberOfSportsTasks, getNumberOfHobbiesTasks 
+} from './todo.js';
+
 // A function for creating elements to prevent repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
@@ -6,8 +11,8 @@ function createListElement(type, className) {
 }
 
 // Show number of tasks on each button
-function setTaskCounter(numberOfTasks){
-  const taskCounter = document.querySelector('#task-count');
+function setTaskCounter(numberOfTasks, counterID){
+  const taskCounter = document.querySelector(counterID);
   taskCounter.innerHTML = numberOfTasks;
 }
 
@@ -21,6 +26,29 @@ function clearMainContent(){
 function setTitle(title){
   const mainTitle = document.querySelector('#main-title');
     mainTitle.innerHTML = title;
+}
+
+
+function setAllTaskCounters() {
+  const counterAll = document.querySelector('#task-count-all');
+  const counterToday = document.querySelector('#task-count-today');
+  const counterWeek = document.querySelector('#task-count-week');
+  const counterPrio = document.querySelector('#task-count-prio');
+
+  const counterProjects = document.querySelector('#task-count-projects');
+  const counterHousehold = document.querySelector('#task-count-household');
+  const counterSports = document.querySelector('#task-count-sports');
+  const counterHobbies = document.querySelector('#task-count-hobbies');
+
+  counterAll.addEventListener("load", setTaskCounter(getNumberOfAllTasks(), '#task-count-all'));
+  counterToday.addEventListener("load", setTaskCounter(getNumberOfTodaysTasks(), '#task-count-today'));
+  counterWeek.addEventListener("load", setTaskCounter(getNumberOfThisWeeksTasks(), '#task-count-week'));
+  counterPrio.addEventListener("load", setTaskCounter(getNumberOfImportantTasks(), '#task-count-prio'));
+
+  counterProjects.addEventListener("load", setTaskCounter(getNumberOfProjectsTasks(), '#task-count-projects'));
+  counterHousehold.addEventListener("load", setTaskCounter(getNumberOfHouseholdTasks(), '#task-count-household'));
+  counterSports.addEventListener("load", setTaskCounter(getNumberOfSportsTasks(), '#task-count-sports'));
+  counterHobbies.addEventListener("load", setTaskCounter(getNumberOfHobbiesTasks(), '#task-count-hobbies'));
 }
 
 function getAllElements(){
@@ -87,4 +115,4 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { printTasks, clearMainContent, setTitle, setTaskCounter, getAllElements };
+export { printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };

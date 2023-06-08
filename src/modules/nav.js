@@ -4,9 +4,8 @@ import {
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
 } from './todo';
 
-
 function addEventListeners() {
-  // Get al navigation buttons
+  // Get all navigation buttons
   const { 
     optionAll,
     optionToday,

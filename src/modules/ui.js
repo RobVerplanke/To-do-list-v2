@@ -1,5 +1,3 @@
-import { convertAllTasks } from './todo';
-
 // A function for creating elements to prevent repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
@@ -7,14 +5,19 @@ function createListElement(type, className) {
   return listItem;
 }
 
+function clearMainContent(){
+  const mainContent = document.querySelector('#main-content');
+  mainContent.innerHTML = "";
+}
+
 // Display tasks in the main area
-export default function printTasks() {
+function printTasks(selectedObjects) {
   // import all tasks as objects
-  const tasks = convertAllTasks();
+  const tasks = selectedObjects;
 
   const mainContent = document.querySelector('#main-content');
   const hr = document.createElement('hr');
-
+  
   tasks.forEach((task) => {
     // Create all elements
     const taskItem = createListElement('ul', 'task');
@@ -44,3 +47,5 @@ export default function printTasks() {
     mainContent.append(taskItem, hr);
   });
 }
+
+export { printTasks, clearMainContent };

@@ -1,5 +1,6 @@
-import { isToday, isThisWeek } from 'date-fns';
-import { getAllTasks } from './storage';
+import { isToday, isThisWeek, parseISO } from 'date-fns';
+import { getAllArrayTasks } from './storage';
+import { clearMainContent, printTasks } from './ui';
 
 class Task {
   constructor(category, title, description, note, prioStatus, date, completed) {
@@ -15,9 +16,9 @@ class Task {
 
 // Return all tasks as objects
 function convertAllTasks() {
-  const tasks = getAllTasks();
+  const tasks = getAllArrayTasks();
   const taskObjects = [];
-
+  
   // Create an object for each task in the storage array
   tasks.forEach((task) => {
     const taskObject = new Task(...task);
@@ -28,23 +29,32 @@ function convertAllTasks() {
 }
 
 function filterTasks(condition){
+  const today = new Date();
   const taskList = convertAllTasks();
   const tasksFiltered = taskList.filter(condition);
   return tasksFiltered;
 }
 
+function getAllObjectTasks(){
+  clearMainContent();
+  printTasks(convertAllTasks());
+}
+
 function getTodaysTasks() {
-  return filterTasks((task) => isToday(task.date));
+  clearMainContent();
+  printTasks(filterTasks((task) => isToday(parseISO(task.date))));
 }
 
 function getThisWeeksTasks() {
-  return filterTasks((task) => isThisWeek(task.date));
+  clearMainContent();
+  printTasks(filterTasks((task) => isThisWeek(parseISO(task.date))));
 }
 
 function getImportantTasks() {
-  return filterTasks((task) => task.prioStatus === true);
+  clearMainContent();
+  printTasks(filterTasks((task) => task.prioStatus === true));
 }
 
 export {
-  convertAllTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks,
+  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks,
 };

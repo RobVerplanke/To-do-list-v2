@@ -7,7 +7,7 @@ import { getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks } from './counter';
 
   
-// A function for creating elements to prevent repetition
+// A customized function for creating HTML-elements to avoid code repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
   listItem.classList.add(className);
@@ -44,7 +44,7 @@ function setAllTaskCounters() {
   const counterSports = document.querySelector('#task-count-sports');
   const counterHobbies = document.querySelector('#task-count-hobbies');
 
-  // Update the counter as soon as the page is loaded
+  // Update all counters as soon as the page is loaded
   counterAll.addEventListener("load", setTaskCounter(getNumberOfAllTasks(), '#task-count-all'));
   counterToday.addEventListener("load", setTaskCounter(getNumberOfTodaysTasks(), '#task-count-today'));
   counterWeek.addEventListener("load", setTaskCounter(getNumberOfThisWeeksTasks(), '#task-count-week'));
@@ -85,13 +85,11 @@ function getAllElements(){
 
 // Display tasks in the main area
 function printTasks(selectedObjects) {
-  // import all tasks as objects
   const tasks = selectedObjects;
-
   const mainContent = document.querySelector('#main-content');
   
+  // Create all the needed elements for each task
   tasks.forEach((task) => {
-    // Create all elements
     const taskItem = createListElement('ul', 'task');
     const taskCheckboxHolder = createListElement('li', 'task-checkbox');
     const taskCheckbox = createListElement('input', 'task-select');
@@ -101,20 +99,16 @@ function printTasks(selectedObjects) {
     const taskEditButton = createListElement('li', 'task-edit');
     const taskDeleteButton = createListElement('li', 'task-delete');
 
-    // set content
+    // set title and description content
     taskTitle.innerHTML = task.title;
     taskDescription.innerHTML = task.description;
 
-    // set input type as checkbox and add edit- and delete button icons
-    taskCheckbox.type = 'checkbox';
+    // Edit and delete button icons imported from Ionicons
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
 
-
-
-    // Voor volgende keer: Event listener op verwijder-knop zetten en werkend maken
-
-
+    // set input type as checkbox
+    taskCheckbox.type = 'checkbox';
 
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);

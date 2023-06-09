@@ -6,33 +6,32 @@ import {
 import { getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks } from './counter';
 
-  
-// A customized function for creating HTML-elements to avoid code repetition
+// A customized function for creating elements to avoid repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
   listItem.classList.add(className);
   return listItem;
 }
 
-// Reset content area
-function clearMainContent(){
-  const mainContent = document.querySelector('#main-content');
-  mainContent.innerHTML = "";
-}
-
-// Set the title of the task list
-function setTitle(title){
-  const mainTitle = document.querySelector('#main-title');
-  mainTitle.innerHTML = title;
-}
-
-// Show the number of tasks at the end of each button
+// Show number of tasks on each button
 function setTaskCounter(numberOfTasks, counterID){
   const taskCounter = document.querySelector(counterID);
   taskCounter.innerHTML = numberOfTasks;
 }
 
-// Select each task counter and update it
+// Clear content area
+function clearMainContent(){
+  const mainContent = document.querySelector('#main-content');
+  mainContent.innerHTML = "";
+}
+
+// Set title of tasklist
+function setTitle(title){
+  const mainTitle = document.querySelector('#main-title');
+    mainTitle.innerHTML = title;
+}
+
+// Create counters which will show the number of tasks in each category
 function setAllTaskCounters() {
   const counterAll = document.querySelector('#task-count-all');
   const counterToday = document.querySelector('#task-count-today');
@@ -44,7 +43,7 @@ function setAllTaskCounters() {
   const counterSports = document.querySelector('#task-count-sports');
   const counterHobbies = document.querySelector('#task-count-hobbies');
 
-  // Update all counters as soon as the page is loaded
+  // Load all counters and update the content directly when the page is loaded
   counterAll.addEventListener("load", setTaskCounter(getNumberOfAllTasks(), '#task-count-all'));
   counterToday.addEventListener("load", setTaskCounter(getNumberOfTodaysTasks(), '#task-count-today'));
   counterWeek.addEventListener("load", setTaskCounter(getNumberOfThisWeeksTasks(), '#task-count-week'));
@@ -56,7 +55,7 @@ function setAllTaskCounters() {
   counterHobbies.addEventListener("load", setTaskCounter(getNumberOfHobbiesTasks(), '#task-count-hobbies'));
 }
 
-// Load and return all elements needed for the navigation buttons
+// Return all HTML-elements needed for the navigation
 function getAllElements(){
   const optionAll = document.querySelector('#options-all');
   const optionToday = document.querySelector('#options-today');
@@ -88,8 +87,8 @@ function printTasks(selectedObjects) {
   const tasks = selectedObjects;
   const mainContent = document.querySelector('#main-content');
   
-  // Create all the needed elements for each task
   tasks.forEach((task) => {
+    // Create all elements needed to display a task
     const taskItem = createListElement('ul', 'task');
     const taskCheckboxHolder = createListElement('li', 'task-checkbox');
     const taskCheckbox = createListElement('input', 'task-select');
@@ -99,11 +98,11 @@ function printTasks(selectedObjects) {
     const taskEditButton = createListElement('li', 'task-edit');
     const taskDeleteButton = createListElement('li', 'task-delete');
 
-    // set title and description content
+    // set title and description
     taskTitle.innerHTML = task.title;
     taskDescription.innerHTML = task.description;
 
-    // Edit and delete button icons imported from Ionicons
+    // Import edit and delete button icons from Ionicons
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
 
@@ -120,6 +119,5 @@ function printTasks(selectedObjects) {
     mainContent.append(taskItem, hr);
   });
 }
-
 
 export { printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };

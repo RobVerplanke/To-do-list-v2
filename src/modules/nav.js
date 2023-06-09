@@ -29,5 +29,4 @@ function addEventListeners() {
   catHobbies.addEventListener("click", getHobbiesTasks);
 }
 
-
 export { addEventListeners };

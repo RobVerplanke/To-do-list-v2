@@ -3,6 +3,10 @@ import {
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
 } from './todo.js';
 
+import { getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
+  getNumberOfSportsTasks, getNumberOfHobbiesTasks } from './counter';
+
+  
 // A function for creating elements to prevent repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
@@ -105,6 +109,12 @@ function printTasks(selectedObjects) {
     taskCheckbox.type = 'checkbox';
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
+
+
+
+    // Voor volgende keer: Event listener op verwijder-knop zetten en werkend maken
+
+
 
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);

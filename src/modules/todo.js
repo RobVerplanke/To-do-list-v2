@@ -1,6 +1,6 @@
 import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
-import { clearMainContent, printTasks, setTitle, setTaskCounter } from './ui';
+import { clearMainContent, printTasks, setTitle } from './ui';
 
 // The task object
 class Task {
@@ -29,61 +29,12 @@ function convertAllTasks() {
   return taskObjects;
 }
 
-// Filter all the task objects for the given condition and return only the selected tasks
+// Filter all the objects for the given condition and return the selected tasks
 function filterTasks(condition){
   const today = new Date();
   const taskList = convertAllTasks();
   const tasksFiltered = taskList.filter(condition);
   return tasksFiltered;
-}
-
-// Get number of tasks for each category
-
-function getNumberOfAllTasks() {
-  const tasks = getAllArrayTasks();
-  return tasks.length;
-}
-
-function getNumberOfTodaysTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => isToday(parseISO(task.date)));
-  return filteredTasks.length;
-}
-
-function getNumberOfThisWeeksTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => isThisWeek(parseISO(task.date)));
-  return filteredTasks.length;
-}
-
-function getNumberOfImportantTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => task.prioStatus === true);
-  return filteredTasks.length;
-}
-
-function getNumberOfProjectsTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => task.category === 'Projects');
-  return filteredTasks.length;
-}
-
-function getNumberOfHouseholdTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => task.category === 'Household');
-  return filteredTasks.length;
-}
-
-function getNumberOfSportsTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => task.category === 'Sports');
-  return filteredTasks.length;
-}
-
-function getNumberOfHobbiesTasks() {
-  const tasks = convertAllTasks();
-  const filteredTasks = tasks.filter((task) => task.category === 'Hobbies');
-  return filteredTasks.length;
 }
 
 
@@ -139,7 +90,6 @@ function getImportantTasks() {
 
 
 export { 
-  getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
-  getNumberOfSportsTasks, getNumberOfHobbiesTasks, convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks
 };

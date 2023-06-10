@@ -4,6 +4,7 @@ import {
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
 } from './todo';
 
+// Add 'click' event listeners to each navigation button
 function addEventListeners() {
   // Get all navigation buttons
   const { 
@@ -17,7 +18,7 @@ function addEventListeners() {
     catHobbies
   } = getAllElements();
   
-  // Add event listeners to each button
+  // Add event listeners to each button and set the corresponding function
   optionAll.addEventListener("click", getAllObjectTasks);
   optionToday.addEventListener("click", getTodaysTasks);
   optionWeek.addEventListener("click", getThisWeeksTasks);

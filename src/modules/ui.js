@@ -3,14 +3,14 @@ import {
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
 } from './counter';
 
-// A function for creating elements to avoid repetition
+// A customized function for creating elements to avoid repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
   listItem.classList.add(className);
   return listItem;
 }
 
-// Show number of tasks on each button
+// Show the number of tasks on each corresponding button
 function setTaskCounter(numberOfTasks, counterID){
   const taskCounter = document.querySelector(counterID);
   taskCounter.innerHTML = numberOfTasks;
@@ -28,7 +28,7 @@ function setTitle(title){
     mainTitle.innerHTML = title;
 }
 
-// Load all counters after the page is loaded
+// Get all counter holders and set its content after the page is loaded
 function setAllTaskCounters() {
   const counterAll = document.querySelector('#task-count-all');
   const counterToday = document.querySelector('#task-count-today');
@@ -94,7 +94,7 @@ function printTasks(selectedObjects) {
     const taskEditButton = createListElement('li', 'task-edit');
     const taskDeleteButton = createListElement('li', 'task-delete');
 
-    // set content
+    // set content of title and description
     taskTitle.innerHTML = task.title;
     taskDescription.innerHTML = task.description;
 

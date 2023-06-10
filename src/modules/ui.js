@@ -75,7 +75,7 @@ function getAllElements(){
     catHousehold,
     catSports,
     catHobbies,
-    addButton,
+    addButton
   };
 }
 

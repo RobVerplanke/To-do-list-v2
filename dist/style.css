@@ -200,6 +200,7 @@ hr{
     color: var(--accent-color);
     margin-left: 20px;
     cursor: pointer;
+    border: solid 1px;
 }
 
 #footer a{
@@ -215,7 +216,7 @@ hr{
     z-index: 2;
     position: absolute;
     top: 20em;
-    left: 35em;
+    left: 30em;
     opacity: 1;
     padding: 20px;
     height: auto;

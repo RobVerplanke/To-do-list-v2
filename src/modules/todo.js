@@ -89,7 +89,6 @@ function getImportantTasks() {
  }
 
 export { 
-  getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
-  getNumberOfSportsTasks, getNumberOfHobbiesTasks, convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks
 };

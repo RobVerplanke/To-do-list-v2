@@ -5,7 +5,6 @@ const formContent = document.querySelector('#form-content');
 
 // Function to easily switch between visible/invisible
 function switchClass(oldClass, newClass){
-  console.log('switched classes');
   const formContainer = document.querySelector('#form-container');
   formContainer.classList.remove(oldClass);
   formContainer.classList.add(newClass);
@@ -14,7 +13,6 @@ function switchClass(oldClass, newClass){
 
 // Make pop-up visible
 function enableForm() {
-  console.log('enabled');
   switchClass('form-container-disabled', 'form-container-enabled');
 
   // Let the cancel button make the form invisible
@@ -24,7 +22,6 @@ function enableForm() {
 
 // Make pop-up invisible
 function disableForm() {
-  console.log('disabled');
   switchClass('form-container-enabled', 'form-container-disabled');
 }
 

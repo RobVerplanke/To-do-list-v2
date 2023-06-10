@@ -32,6 +32,7 @@ function addEventListeners() {
   catHobbies.addEventListener("click", getHobbiesTasks);
 
   addButton.addEventListener("click", enableForm);
+
 }
 
 export { addEventListeners };

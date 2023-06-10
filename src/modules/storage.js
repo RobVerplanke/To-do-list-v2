@@ -1,4 +1,4 @@
-// Stores all tasks in this format: category, title, description, note, prioStatus, date, completed
+// Stores all tasks in this format: category, title, description, note, prio status, date, completed
 const tasks = [
   ['Household', 'Oud papier weg gooien', 'Naar recycling container brengen', 'Vergeet niet het oud papier uit de rommelkamer mee te nemen', true, '2023-06-14', true],
   ['Hobbies', 'Gitaar spelen', 'Leer de mineur toonladder', 'over de hele nek van de gitaar', false, '2023-10-01', false],

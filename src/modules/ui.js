@@ -1,12 +1,9 @@
 import { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
-} from './todo.js';
+} from './counter';
 
-import { getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
-  getNumberOfSportsTasks, getNumberOfHobbiesTasks } from './counter';
-
-// A customized function for creating elements to avoid repetition
+// A function for creating elements to avoid repetition
 function createListElement(type, className) {
   const listItem = document.createElement(type);
   listItem.classList.add(className);
@@ -25,13 +22,13 @@ function clearMainContent(){
   mainContent.innerHTML = "";
 }
 
-// Set title of tasklist
+// Reset title
 function setTitle(title){
   const mainTitle = document.querySelector('#main-title');
     mainTitle.innerHTML = title;
 }
 
-// Create counters which will show the number of tasks in each category
+// Load all counters after the page is loaded
 function setAllTaskCounters() {
   const counterAll = document.querySelector('#task-count-all');
   const counterToday = document.querySelector('#task-count-today');
@@ -43,7 +40,6 @@ function setAllTaskCounters() {
   const counterSports = document.querySelector('#task-count-sports');
   const counterHobbies = document.querySelector('#task-count-hobbies');
 
-  // Load all counters and update the content directly when the page is loaded
   counterAll.addEventListener("load", setTaskCounter(getNumberOfAllTasks(), '#task-count-all'));
   counterToday.addEventListener("load", setTaskCounter(getNumberOfTodaysTasks(), '#task-count-today'));
   counterWeek.addEventListener("load", setTaskCounter(getNumberOfThisWeeksTasks(), '#task-count-week'));
@@ -55,7 +51,7 @@ function setAllTaskCounters() {
   counterHobbies.addEventListener("load", setTaskCounter(getNumberOfHobbiesTasks(), '#task-count-hobbies'));
 }
 
-// Return all HTML-elements needed for the navigation
+// Return all elements that are needed for the navigation buttons
 function getAllElements(){
   const optionAll = document.querySelector('#options-all');
   const optionToday = document.querySelector('#options-today');
@@ -87,8 +83,8 @@ function printTasks(selectedObjects) {
   const tasks = selectedObjects;
   const mainContent = document.querySelector('#main-content');
   
+  // Create all HTML-elements for each task
   tasks.forEach((task) => {
-    // Create all elements needed to display a task
     const taskItem = createListElement('ul', 'task');
     const taskCheckboxHolder = createListElement('li', 'task-checkbox');
     const taskCheckbox = createListElement('input', 'task-select');
@@ -98,15 +94,14 @@ function printTasks(selectedObjects) {
     const taskEditButton = createListElement('li', 'task-edit');
     const taskDeleteButton = createListElement('li', 'task-delete');
 
-    // set title and description
+    // set content
     taskTitle.innerHTML = task.title;
     taskDescription.innerHTML = task.description;
 
-    // Import edit and delete button icons from Ionicons
+    //  Add edit- and delete button icons imported from Ionicons
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
-
-    // set input type as checkbox
+    
     taskCheckbox.type = 'checkbox';
 
     // Add all new elements to the list element

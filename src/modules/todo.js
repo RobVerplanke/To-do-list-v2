@@ -1,6 +1,6 @@
 import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
-import { clearMainContent, printTasks, setTitle, setTaskCounter } from './ui';
+import { clearMainContent, printTasks, setTitle } from './ui';
 
 // The task object
 class Task {
@@ -29,7 +29,7 @@ function convertAllTasks() {
   return taskObjects;
 }
 
-// Filter function which filters all tasks with a given condition
+// Customized function to filter the selected tasks
 function filterTasks(condition){
   const today = new Date();
   const taskList = convertAllTasks();
@@ -89,6 +89,7 @@ function getImportantTasks() {
  }
 
 export { 
-  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
+  getNumberOfSportsTasks, getNumberOfHobbiesTasks, convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks
 };

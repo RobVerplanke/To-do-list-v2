@@ -200,7 +200,6 @@ hr{
     color: var(--accent-color);
     margin-left: 20px;
     cursor: pointer;
-    border: solid 1px;
 }
 
 #footer a{
@@ -220,7 +219,7 @@ hr{
     opacity: 1;
     padding: 20px;
     height: auto;
-    width: 30vw;
+    width: 25vw;
     background-color: white;
     box-shadow: 1px 1px 5px 1px;
     border-radius: 10px;
@@ -234,7 +233,7 @@ hr{
     opacity: 0;
     padding: 20px;
     height: auto;
-    width: 30vw;
+    width: 25vw;
     background-color: white;
     box-shadow: 1px 1px 5px 1px;
     border-radius: 10px;

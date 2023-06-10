@@ -187,6 +187,7 @@ hr{
 
 .task-title{
     font-weight: 700;
+    cursor: pointer;
 }
 
 .task-description{
@@ -225,16 +226,14 @@ hr{
 }
 
 .form-container-disabled{
-    z-index: 0;
+    z-index: 2;
     position: absolute;
-    top: auto;
-    left: auto;
-
+    top: 20em;
+    left: 35em;
     opacity: 0;
-
+    padding: 20px;
     height: auto;
-    width: 35vw;
-    padding: 40px;
+    width: 30vw;
     background-color: white;
     box-shadow: 1px 1px 5px 1px;
     border-radius: 10px;
@@ -245,4 +244,8 @@ hr{
     justify-content: end;
     align-items: center;
     color: var(--accent-color);
+}
+
+#cancel-button{
+    cursor: pointer;
 }

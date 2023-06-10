@@ -1,3 +1,4 @@
+import { enableForm } from './form';
 import { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
@@ -93,6 +94,8 @@ function printTasks(selectedObjects) {
     const taskDescription = createListElement('div', 'task-description');
     const taskEditButton = createListElement('li', 'task-edit');
     const taskDeleteButton = createListElement('li', 'task-delete');
+    
+    taskCheckbox.type = 'checkbox';
 
     // set content of title and description
     taskTitle.innerHTML = task.title;
@@ -102,13 +105,14 @@ function printTasks(selectedObjects) {
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
     
-    taskCheckbox.type = 'checkbox';
-
+    // Make title clickable and enable the pop-up form with more info about the task
+    taskTitle.addEventListener('click', enableForm);
+    
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);
     taskTextHolder.append(taskTitle, taskDescription);
     taskItem.append(taskCheckboxHolder, taskTextHolder, taskEditButton, taskDeleteButton);
-
+    
     // Add list element to main area and add a horizontal line to visually divide the tasks
     const hr = document.createElement('hr');
     mainContent.append(taskItem, hr);

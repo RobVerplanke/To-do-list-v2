@@ -1,24 +1,46 @@
 // create a pop up form to display: view full task info, edit task, add task
 
-import { createListElement } from './ui';
-
-const formContainer = document.querySelector('#form-container');
 const formTop = document.querySelector('#form-top');
 const formContent = document.querySelector('#form-content');
 
-// Add cancel button at the top of the form, icon imported from Google Fonts
-formTop.innerHTML = '<span class="material-symbols-outlined">cancel</span>';
-
-function formViewTask(){
-
-}
-
-
-function formEditTask(){
+// Function to easily switch between visible/invisible
+function switchClass(oldClass, newClass){
+  console.log('switched classes');
+  const formContainer = document.querySelector('#form-container');
+  formContainer.classList.remove(oldClass);
+  formContainer.classList.add(newClass);
 
 }
 
+// Make pop-up visible
+function enableForm() {
+  console.log('enabled');
+  switchClass('form-container-disabled', 'form-container-enabled');
 
-function formAddTask(){
-
+  // Let the cancel button make the form invisible
+  const cancelButton = document.querySelector('#cancel-button');
+  cancelButton.addEventListener('click', disableForm);
 }
+
+// Make pop-up invisible
+function disableForm() {
+  console.log('disabled');
+  switchClass('form-container-enabled', 'form-container-disabled');
+}
+
+
+function formViewTask() {
+  enableForm();
+}
+
+
+function formEditTask() {
+  enableForm();
+}
+
+
+function formAddTask() {
+  enableForm();
+}
+
+export { enableForm, formViewTask, formEditTask, formAddTask }

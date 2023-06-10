@@ -1,4 +1,5 @@
 import { getAllElements } from './ui';
+import { enableForm } from './form';
 import { 
   getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
@@ -15,7 +16,8 @@ function addEventListeners() {
     catProjects,
     catHousehold,
     catSports,
-    catHobbies
+    catHobbies,
+    addButton
   } = getAllElements();
   
   // Add event listeners to each button and set the corresponding function
@@ -28,6 +30,8 @@ function addEventListeners() {
   catHousehold.addEventListener("click", getHouseholdTasks);
   catSports.addEventListener("click", getSportsTasks);
   catHobbies.addEventListener("click", getHobbiesTasks);
+
+  addButton.addEventListener("click", enableForm);
 }
 
 export { addEventListeners };

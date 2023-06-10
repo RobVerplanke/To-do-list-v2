@@ -206,3 +206,43 @@ hr{
     margin-left: 10px;
     margin-top: 3px;
 }
+
+
+/* Pop-up form */
+
+.form-container-enabled{
+    z-index: 2;
+    position: absolute;
+    top: 20em;
+    left: 35em;
+    opacity: 1;
+    padding: 20px;
+    height: auto;
+    width: 30vw;
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px;
+    border-radius: 10px;
+}
+
+.form-container-disabled{
+    z-index: 0;
+    position: absolute;
+    top: auto;
+    left: auto;
+
+    opacity: 0;
+
+    height: auto;
+    width: 35vw;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px;
+    border-radius: 10px;
+}
+
+#form-top{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: var(--accent-color);
+}

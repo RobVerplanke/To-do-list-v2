@@ -98,7 +98,7 @@ function printTasks(selectedObjects) {
     taskTitle.innerHTML = task.title;
     taskDescription.innerHTML = task.description;
 
-    //  Add edit- and delete button icons imported from Ionicons
+    //  Add edit- and delete button icons imported from Google Fonts
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
     
@@ -115,4 +115,4 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };
+export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };

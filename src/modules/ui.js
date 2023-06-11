@@ -105,8 +105,10 @@ function printTasks(selectedObjects) {
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
     
-    // Make title clickable and enable the pop-up form with more info about the task
+    // Open form when clicked
     taskTitle.addEventListener('click', enableForm);
+    taskEditButton.addEventListener('click', enableForm);
+
     
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);

@@ -1,6 +1,6 @@
 // create a pop up form to display: view full task info, edit task, add task
 
-import { getFormContentElement, getFormElements, createViewTaskElements, createInputTaskElements } from './ui';
+import { getFormElements, createViewTaskElements, createInputTaskElements } from './ui';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -9,24 +9,49 @@ function switchClass(oldClass, newClass){
   formContainer.classList.add(newClass);
 }
 
+// Clear content
+function clearFormContent() {
+    // Get all content holders
+    const {
+      contentCat,
+      contentTitle,
+      contentDescription,
+      contentNote,
+      contentPrioStatus,
+      contentDate,
+      contentCompleted
+    } = getFormElements();
+
+    // Clear all values
+    contentCat.innerHTML = '';
+    contentTitle.innerHTML = '';
+    contentDescription.innerHTML = '';
+    contentNote.innerHTML = '';
+    contentPrioStatus.innerHTML = '';
+    contentDate.innerHTML = '';
+    contentCompleted.innerHTML = '';
+}
+
 // Make pop-up visible
 function enableForm() {
   switchClass('form-container-disabled', 'form-container-enabled');
 
   // Let the cancel button make the form invisible
   const cancelButton = document.querySelector('#cancel-button');
+  const editButton = document.querySelector('#edit-button');
   cancelButton.addEventListener('click', disableForm);
+  // editButton.addEventListener('click', formEditTask);
 }
 
 // Make pop-up invisible
 function disableForm() {
   switchClass('form-container-enabled', 'form-container-disabled');
+  clearFormContent();
 }
 
-function formViewTask() {
+function formViewTask(task) {
   enableForm();
-  const formContent = getFormContentElement();
-  
+
   // Get all content holders
   const {
     contentCat,
@@ -50,35 +75,68 @@ function formViewTask() {
   } = createViewTaskElements();
 
   // Set the content of each <p> element
-  viewCat.innerHTML = '';
-  viewTitle.innerHTML = '';
-  viewDescription.innerHTML = '';
-  viewNote.innerHTML = '';
-  viewPrioStatus.innerHTML = '';
-  viewDate.innerHTML = '';
-  viewCompleted.innerHTML = '';
+  viewCat.textContent = task.category;
+  viewTitle.textContent = task.title;
+  viewDescription.textContent = task.description;
+  viewNote.textContent = task.note;
+  viewPrioStatus.textContent = task.prioStatus;
+  viewDate.textContent = task.date;
+  viewCompleted.textContent = task.completed;
 
-  // Add the <p> element to the content holder
-  contentCat.append(viewCat);
-  contentTitle.append(viewTitle);
-  contentDescription.append(viewDescription);
-  contentNote.append(viewNote);
-  contentPrioStatus.append(viewPrioStatus);
-  contentDate.append(viewDate);
-  contentCompleted.append(viewCompleted);
-
-  // Add all content holders to the parent content holder
-  formContent.append(contentCat, contentTitle, contentDescription, contentNote, contentPrioStatus, contentDate, contentCompleted);
+  // Add the <p> elements to the content holders
+  contentCat.appendChild(viewCat);
+  contentTitle.appendChild(viewTitle);
+  contentDescription.appendChild(viewDescription);
+  contentNote.appendChild(viewNote);
+  contentPrioStatus.appendChild(viewPrioStatus);
+  contentDate.appendChild(viewDate);
+  contentCompleted.appendChild(viewCompleted);
 
   console.log('View task info');
 }
 
-function formEditTask() {
+function formEditTask(task) {
   enableForm();
-  getFormElements();
-  createInputTaskElements();
 
-  // Fill content holders with pre-filled input fields
+  // Get all content holders
+  const {
+    contentCat,
+    contentTitle,
+    contentDescription,
+    contentNote,
+    contentPrioStatus,
+    contentDate,
+    contentCompleted
+  } = getFormElements();
+
+  // Create <p> elements
+  const { 
+    inputCat,
+    inputTitle,
+    inputDescription,
+    inputNote,
+    inputPrioStatus,
+    inputDate,
+    inputCompleted
+  } = createInputTaskElements();
+
+  // Set the content of each <p> element
+  inputCat.value = task.category;
+  inputTitle.value = task.title;
+  inputDescription.value = task.description;
+  inputNote.value = task.note;
+  inputPrioStatus.value = task.prioStatus;
+  inputDate.value = task.date;
+  inputCompleted.value = task.completed;
+
+  // Add the <p> elements to the content holders
+  contentCat.appendChild(inputCat);
+  contentTitle.appendChild(inputTitle);
+  contentDescription.appendChild(inputDescription);
+  contentNote.appendChild(inputNote);
+  contentPrioStatus.appendChild(inputPrioStatus);
+  contentDate.appendChild(inputDate);
+  contentCompleted.appendChild(inputCompleted);
 
   console.log('Edit task info');
 }

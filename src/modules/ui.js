@@ -18,6 +18,14 @@ function createFormElement(type, className) {
   return listItem;
 }
 
+// A customized function for creating input elements in the pop-up window to avoid repetition
+function createInputElement(element, className, type) {
+  const listItem = document.createElement(element);
+  listItem.classList.add(className);
+  listItem.type = type;
+  return listItem;
+}
+
 // Show the number of tasks on each corresponding button
 function setTaskCounter(numberOfTasks, counterID){
   const taskCounter = document.querySelector(counterID);
@@ -113,9 +121,8 @@ function printTasks(selectedObjects) {
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
     
     // Open form when clicked
-    taskTitle.addEventListener('click', formViewTask);
-    taskEditButton.addEventListener('click', formEditTask);
-
+    taskTitle.addEventListener('click', () => formViewTask(task));
+    taskEditButton.addEventListener('click', () => formEditTask(task));
     
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);
@@ -130,14 +137,6 @@ function printTasks(selectedObjects) {
 
 
 // ***** Pop-up window *****
-
-
-// Get the content holder in the pop-up window
-function getFormContentElement(){
-  const formContent = document.querySelector('#form-content');
-  return { formContent }
-}
-
 
 function getFormElements() {
   const contentCat = document.querySelector('#content-task-cat');
@@ -164,16 +163,16 @@ function createViewTaskElements() {
 }
 
 function createInputTaskElements() {
-  const inputCat = createFormElement('input', '#input-task-cat');
-  const inputTitle = createFormElement('input', '#input-task-title');
-  const inputDescription = createFormElement('input', '#input-task-desc');
-  const inputNote = createFormElement('input', '#input-task-note');
-  const inputPrioStatus = createFormElement('input', '#input-task-prio');
-  const inputDate = createFormElement('input', '#input-task-date');
-  const inputCompleted = createFormElement('input', '#input-task-completed');
+  const inputCat = createInputElement('input', '#input-task-cat', 'text');
+  const inputTitle = createInputElement('input', '#input-task-title', 'text');
+  const inputDescription = createInputElement('input', '#input-task-desc', 'text');
+  const inputNote = createInputElement('input', '#input-task-note', 'text');
+  const inputPrioStatus = createInputElement('input', '#input-task-prio', 'text');
+  const inputDate = createInputElement('input', '#input-task-date', 'text');
+  const inputCompleted = createInputElement('input', '#input-task-completed', 'text');
 
   return { inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted }
 }
 
-export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements, getFormContentElement,
+export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements,
   getFormElements, createViewTaskElements, createInputTaskElements };

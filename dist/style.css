@@ -226,7 +226,7 @@ hr{
 }
 
 .form-container-disabled{
-    z-index: 0;
+    z-index: -10;
     position: absolute;
     top: 20em;
     left: 25em;
@@ -246,6 +246,20 @@ hr{
     color: var(--accent-color);
 }
 
+#edit-button{
+    cursor: pointer;
+}
+
 #cancel-button{
     cursor: pointer;
+    margin-left: 15px;
+}
+
+.label{
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.content{
+    margin: 5px;
 }

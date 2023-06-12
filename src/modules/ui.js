@@ -128,4 +128,52 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements, createFormElement };
+
+// ***** Pop-up window *****
+
+
+// Get the content holder in the pop-up window
+function getFormContentElement(){
+  const formContent = document.querySelector('#form-content');
+  return { formContent }
+}
+
+
+function getFormElements() {
+  const contentCat = document.querySelector('#content-task-cat');
+  const contentTitle = document.querySelector('#content-task-title');
+  const contentDescription = document.querySelector('#content-task-desc');
+  const contentNote = document.querySelector('#content-task-note');
+  const contentPrioStatus = document.querySelector('#content-task-prio');
+  const contentDate = document.querySelector('#content-task-date');
+  const contentCompleted = document.querySelector('#content-task-completed');
+
+  return { contentCat, contentTitle, contentDescription, contentNote, contentPrioStatus, contentDate, contentCompleted }
+}
+
+function createViewTaskElements() {
+  const viewCat = createFormElement('p', '#view-task-cat');
+  const viewTitle = createFormElement('p', '#view-task-title');
+  const viewDescription = createFormElement('p', '#view-task-desc');
+  const viewNote = createFormElement('p', '#view-task-note');
+  const viewPrioStatus = createFormElement('p', '#view-task-prio');
+  const viewDate = createFormElement('p', '#view-task-date');
+  const viewCompleted = createFormElement('p', '#view-task-completed');
+
+  return { viewCat, viewTitle, viewDescription, viewNote, viewPrioStatus, viewDate, viewCompleted }
+}
+
+function createInputTaskElements() {
+  const inputCat = createFormElement('input', '#input-task-cat');
+  const inputTitle = createFormElement('input', '#input-task-title');
+  const inputDescription = createFormElement('input', '#input-task-desc');
+  const inputNote = createFormElement('input', '#input-task-note');
+  const inputPrioStatus = createFormElement('input', '#input-task-prio');
+  const inputDate = createFormElement('input', '#input-task-date');
+  const inputCompleted = createFormElement('input', '#input-task-completed');
+
+  return { inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted }
+}
+
+export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements, getFormContentElement,
+  getFormElements, createViewTaskElements, createInputTaskElements };

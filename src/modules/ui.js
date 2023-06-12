@@ -1,4 +1,4 @@
-import { enableForm } from './form';
+import { formViewTask, formEditTask } from './form';
 import { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
@@ -6,6 +6,13 @@ import {
 
 // A customized function for creating elements to avoid repetition
 function createListElement(type, className) {
+  const listItem = document.createElement(type);
+  listItem.classList.add(className);
+  return listItem;
+}
+
+// A customized function for creating elements in the pop-up window to avoid repetition
+function createFormElement(type, className) {
   const listItem = document.createElement(type);
   listItem.classList.add(className);
   return listItem;
@@ -106,8 +113,8 @@ function printTasks(selectedObjects) {
     taskDeleteButton.innerHTML = '<span class="material-symbols-outlined" title="Delete task">delete</span>';
     
     // Open form when clicked
-    taskTitle.addEventListener('click', enableForm);
-    taskEditButton.addEventListener('click', enableForm);
+    taskTitle.addEventListener('click', formViewTask);
+    taskEditButton.addEventListener('click', formEditTask);
 
     
     // Add all new elements to the list element
@@ -121,4 +128,4 @@ function printTasks(selectedObjects) {
   });
 }
 
-export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements };
+export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements, createFormElement };

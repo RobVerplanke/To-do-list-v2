@@ -1,5 +1,5 @@
 import { getAllElements } from './ui';
-import { enableForm } from './form';
+import { formAddTask } from './form';
 import { 
   getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
@@ -31,7 +31,7 @@ function addEventListeners() {
   catSports.addEventListener("click", getSportsTasks);
   catHobbies.addEventListener("click", getHobbiesTasks);
 
-  addButton.addEventListener("click", enableForm);
+  addButton.addEventListener("click", formAddTask);
 
 }
 

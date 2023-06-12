@@ -215,7 +215,7 @@ hr{
     z-index: 2;
     position: absolute;
     top: 20em;
-    left: 30em;
+    left: 25em;
     opacity: 1;
     padding: 20px;
     height: auto;
@@ -226,10 +226,10 @@ hr{
 }
 
 .form-container-disabled{
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     top: 20em;
-    left: 30em;
+    left: 25em;
     opacity: 0;
     padding: 20px;
     height: auto;

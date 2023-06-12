@@ -157,7 +157,9 @@ function createViewTaskElements() {
   const viewNote = createFormElement('p', '#view-task-note');
   const viewPrioStatus = createFormElement('p', '#view-task-prio');
   const viewDate = createFormElement('p', '#view-task-date');
-  const viewCompleted = createFormElement('p', '#view-task-completed');
+  const viewCompleted = createFormElement('input', '#view-task-completed');
+  viewCompleted.type = 'checkbox';
+  viewCompleted.disabled = true;
 
   return { viewCat, viewTitle, viewDescription, viewNote, viewPrioStatus, viewDate, viewCompleted }
 }
@@ -169,7 +171,7 @@ function createInputTaskElements() {
   const inputNote = createInputElement('input', '#input-task-note', 'text');
   const inputPrioStatus = createInputElement('input', '#input-task-prio', 'text');
   const inputDate = createInputElement('input', '#input-task-date', 'text');
-  const inputCompleted = createInputElement('input', '#input-task-completed', 'text');
+  const inputCompleted = createFormElement('input', '#view-task-completed');
 
   return { inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted }
 }

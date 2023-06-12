@@ -49,6 +49,7 @@ function disableForm() {
   clearFormContent();
 }
 
+// View the details of a task
 function formViewTask(task) {
   enableForm();
 
@@ -81,7 +82,7 @@ function formViewTask(task) {
   viewNote.textContent = task.note;
   viewPrioStatus.textContent = task.prioStatus;
   viewDate.textContent = task.date;
-  viewCompleted.textContent = task.completed;
+  viewCompleted.checked = task.completed;
 
   // Add the <p> elements to the content holders
   contentCat.appendChild(viewCat);
@@ -91,9 +92,9 @@ function formViewTask(task) {
   contentPrioStatus.appendChild(viewPrioStatus);
   contentDate.appendChild(viewDate);
   contentCompleted.appendChild(viewCompleted);
-
-  console.log('View task info');
 }
+
+// Edit the details of a task
 
 function formEditTask(task) {
   enableForm();
@@ -109,7 +110,7 @@ function formEditTask(task) {
     contentCompleted
   } = getFormElements();
 
-  // Create <p> elements
+  // Create input elements
   const { 
     inputCat,
     inputTitle,
@@ -120,14 +121,50 @@ function formEditTask(task) {
     inputCompleted
   } = createInputTaskElements();
 
-  // Set the content of each <p> element
+  inputCompleted.type = 'checkbox';
+
+  // Set the content of each input element
   inputCat.value = task.category;
   inputTitle.value = task.title;
   inputDescription.value = task.description;
   inputNote.value = task.note;
   inputPrioStatus.value = task.prioStatus;
   inputDate.value = task.date;
-  inputCompleted.value = task.completed;
+  inputCompleted.checked = task.completed;
+
+  // Add the elements to the content holders
+  contentCat.appendChild(inputCat);
+  contentTitle.appendChild(inputTitle);
+  contentDescription.appendChild(inputDescription);
+  contentNote.appendChild(inputNote);
+  contentPrioStatus.appendChild(inputPrioStatus);
+  contentDate.appendChild(inputDate);
+  contentCompleted.appendChild(inputCompleted);
+}
+
+// Add details of a new task
+function formAddTask() {
+  enableForm();
+  
+  // Get all content holders
+  const {
+    contentCat,
+    contentTitle,
+    contentDescription,
+    contentNote,
+    contentPrioStatus,
+    contentDate
+  } = getFormElements();
+
+  // Create <p> elements
+  const { 
+    inputCat,
+    inputTitle,
+    inputDescription,
+    inputNote,
+    inputPrioStatus,
+    inputDate
+  } = createInputTaskElements();
 
   // Add the <p> elements to the content holders
   contentCat.appendChild(inputCat);
@@ -136,19 +173,6 @@ function formEditTask(task) {
   contentNote.appendChild(inputNote);
   contentPrioStatus.appendChild(inputPrioStatus);
   contentDate.appendChild(inputDate);
-  contentCompleted.appendChild(inputCompleted);
-
-  console.log('Edit task info');
-}
-
-function formAddTask() {
-  enableForm();
-  getFormElements();
-  createInputTaskElements();
-
-  // Fill content holders with empty input fields
-
-  console.log('Add task');
 }
 
 export { formViewTask, formEditTask, formAddTask }

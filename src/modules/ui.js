@@ -177,25 +177,7 @@ function createInputTaskElements() {
 
   return { inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted }
 }
-function removeLabelCompleted() {
-  const labelCompleted = document.querySelector('#label-task-completed');
-  labelCompleted.innerHTML = '';
-}
 
-function addLabelCompleted() {
-  const labelCompleted = document.querySelector('#label-task-completed');
-  labelCompleted.innerHTML = 'Completed';
-}
-
-function removeSubmitButton() {
-  const submitFormButton = document.querySelector('#form-bottom');
-  submitFormButton.innerHTML = '';
-}
-
-function addSubmitButton() {
-  const submitFormButton = document.querySelector('#form-bottom');
-  submitFormButton.innerHTML = '<button id ="submit-form-button">Submit</button>';
-}
 
 export { createListElement, printTasks, clearMainContent, setTitle, setTaskCounter, setAllTaskCounters, getAllElements,
-  getFormElements, createViewTaskElements, createInputTaskElements, removeLabelCompleted, addLabelCompleted, removeSubmitButton, addSubmitButton };
+  getFormElements, createViewTaskElements, createInputTaskElements };

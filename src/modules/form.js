@@ -1,6 +1,6 @@
 // create a pop up form to display: view full task info, edit task, add task
 
-import { getFormElements, createViewTaskElements, createInputTaskElements, removeLabelCompleted, addLabelCompleted, removeSubmitButton, addSubmitButton } from './ui';
+import { getFormElements, createViewTaskElements, createInputTaskElements } from './ui';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -52,15 +52,41 @@ function disableForm() {
   clearFormContent();
 }
 
+// Remove the 'Completed' label when its not needed (in the add form)
+function removeLabelCompleted() {
+  const labelCompleted = document.querySelector('#label-task-completed');
+  labelCompleted.innerHTML = '';
+}
+
+// Add the 'Completed' label when its needed (in the view and edit form)
+function addLabelCompleted() {
+  const labelCompleted = document.querySelector('#label-task-completed');
+  labelCompleted.innerHTML = 'Completed';
+}
+
+// Add the submit button when its needed (in the edit and add form)
+function addSubmitButton() {
+  const submitFormButton = document.querySelector('#form-bottom');
+  submitFormButton.innerHTML = '<button id ="submit-form-button">Submit</button>';
+}
+
+// Remove submit button when its not needed (in the view form)
+function removeSubmitButton() {
+  const submitFormButton = document.querySelector('#form-bottom');
+  submitFormButton.innerHTML = '';
+}
+
+// Remove edit button when its not needed (in the edit and add form)
 function removeEditButton(){
   const editButton = document.querySelector('#edit-button');
   editButton.innerHTML = '';
 }
 
+// Add the edit button when its needed (in the view form)
 function AddEditButton(){
   const editButton = document.querySelector('#edit-button');
   if (editButton.innerHTML === '') {
-    editButton.innerHTML = `<span class="material-symbols-outlined" id ="edit-button" title="Edit task">edit_note</span>`;
+    editButton.innerHTML = `edit_note`;
   }
 }
 
@@ -72,6 +98,7 @@ function formViewTask(task) {
   enableForm();
   addLabelCompleted();
   AddEditButton();
+  removeSubmitButton();
 
   // Get all content holders
   const {

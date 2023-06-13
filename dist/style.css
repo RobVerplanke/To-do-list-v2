@@ -59,6 +59,10 @@ input[type="checkbox"]:disabled {
     color: var(--accent-color);
 }
 
+input[type="text"] {
+    width: 20vw;
+}
+
 #form-bottom button{
     cursor: pointer;
     width: 80px;

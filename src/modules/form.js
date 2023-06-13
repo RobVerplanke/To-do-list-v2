@@ -39,8 +39,10 @@ function enableForm() {
 
   // Let the cancel button make the form invisible
   const cancelButton = document.querySelector('#cancel-button');
-  const editButton = document.querySelector('#edit-button');
   cancelButton.addEventListener('click', disableForm);
+  
+  // Edit button in the pop-up window
+  // const editButton = document.querySelector('#edit-button');
   // editButton.addEventListener('click', formEditTask);
 }
 
@@ -50,11 +52,26 @@ function disableForm() {
   clearFormContent();
 }
 
+function removeEditButton(){
+  const editButton = document.querySelector('#edit-button');
+  editButton.innerHTML = '';
+}
+
+function AddEditButton(){
+  const editButton = document.querySelector('#edit-button');
+  if (editButton.innerHTML === '') {
+    editButton.innerHTML = `<span class="material-symbols-outlined" id ="edit-button" title="Edit task">edit_note</span>`;
+  }
+}
+
+
 // View the details of a task
+
+
 function formViewTask(task) {
   enableForm();
   addLabelCompleted();
-  removeSubmitButton();
+  AddEditButton();
 
   // Get all content holders
   const {
@@ -97,12 +114,15 @@ function formViewTask(task) {
   contentCompleted.appendChild(viewCompleted);
 }
 
+
 // Edit the details of a task
+
 
 function formEditTask(task) {
   enableForm();
   addLabelCompleted();
   addSubmitButton();
+  removeEditButton();
 
   // Get all content holders
   const {
@@ -147,11 +167,15 @@ function formEditTask(task) {
   contentCompleted.appendChild(inputCompleted);
 }
 
+
 // Add details of a new task
+
+
 function formAddTask() {
   enableForm();
   addSubmitButton();
-  
+  removeEditButton();
+
   // Get all content holders
   const {
     contentCat,

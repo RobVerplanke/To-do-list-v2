@@ -40,10 +40,6 @@ function enableForm() {
   // Let the cancel button make the form invisible
   const cancelButton = document.querySelector('#cancel-button');
   cancelButton.addEventListener('click', disableForm);
-  
-  // Edit button in the pop-up window
-  // const editButton = document.querySelector('#edit-button');
-  // editButton.addEventListener('click', formEditTask);
 }
 
 // Make pop-up invisible
@@ -83,8 +79,13 @@ function removeEditButton(){
 }
 
 // Add the edit button when its needed (in the view form)
-function AddEditButton(){
+function AddEditButton(task){
   const editButton = document.querySelector('#edit-button');
+  editButton.addEventListener('click', () => {
+    clearFormContent();      
+    formEditTask(task);
+  });
+  
   if (editButton.innerHTML === '') {
     editButton.innerHTML = `edit_note`;
   }
@@ -97,7 +98,7 @@ function AddEditButton(){
 function formViewTask(task) {
   enableForm();
   addLabelCompleted();
-  AddEditButton();
+  AddEditButton(task);
   removeSubmitButton();
 
   // Get all content holders

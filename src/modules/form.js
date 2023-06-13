@@ -1,6 +1,6 @@
 // create a pop up form to display: view full task info, edit task, add task
 
-import { getFormElements, createViewTaskElements, createInputTaskElements } from './ui';
+import { getFormElements, createViewTaskElements, createInputTaskElements, removeLabelCompleted, addLabelCompleted, removeSubmitButton, addSubmitButton } from './ui';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -35,6 +35,7 @@ function clearFormContent() {
 // Make pop-up visible
 function enableForm() {
   switchClass('form-container-disabled', 'form-container-enabled');
+  clearFormContent();
 
   // Let the cancel button make the form invisible
   const cancelButton = document.querySelector('#cancel-button');
@@ -52,6 +53,8 @@ function disableForm() {
 // View the details of a task
 function formViewTask(task) {
   enableForm();
+  addLabelCompleted();
+  removeSubmitButton();
 
   // Get all content holders
   const {
@@ -98,6 +101,8 @@ function formViewTask(task) {
 
 function formEditTask(task) {
   enableForm();
+  addLabelCompleted();
+  addSubmitButton();
 
   // Get all content holders
   const {
@@ -145,6 +150,7 @@ function formEditTask(task) {
 // Add details of a new task
 function formAddTask() {
   enableForm();
+  addSubmitButton();
   
   // Get all content holders
   const {
@@ -173,6 +179,8 @@ function formAddTask() {
   contentNote.appendChild(inputNote);
   contentPrioStatus.appendChild(inputPrioStatus);
   contentDate.appendChild(inputDate);
+
+  removeLabelCompleted();
 }
 
 export { formViewTask, formEditTask, formAddTask }

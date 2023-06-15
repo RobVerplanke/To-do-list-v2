@@ -148,8 +148,9 @@ function getFormElements() {
   const contentPrioStatus = document.querySelector('#content-task-prio');
   const contentDate = document.querySelector('#content-task-date');
   const contentCompleted = document.querySelector('#content-task-completed');
+  const submitButtonContainer = document.querySelector('#form-bottom');
 
-  return { contentCat, contentTitle, contentDescription, contentNote, contentPrioStatus, contentDate, contentCompleted }
+  return { contentCat, contentTitle, contentDescription, contentNote, contentPrioStatus, contentDate, contentCompleted, submitButtonContainer }
 }
 
 function createViewTaskElements() {

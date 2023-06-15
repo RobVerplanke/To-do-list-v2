@@ -9,7 +9,7 @@ function switchClass(oldClass, newClass){
   formContainer.classList.add(newClass);
 }
 
-// Clear content
+// Clear content (and submit button)
 function clearFormContent() {
     // Get all content holders
     const {
@@ -19,7 +19,8 @@ function clearFormContent() {
       contentNote,
       contentPrioStatus,
       contentDate,
-      contentCompleted
+      contentCompleted,
+      submitButtonContainer
     } = getFormElements();
 
     // Clear all values
@@ -30,19 +31,20 @@ function clearFormContent() {
     contentPrioStatus.innerHTML = '';
     contentDate.innerHTML = '';
     contentCompleted.innerHTML = '';
+    submitButtonContainer.innerHTML = '';
 }
 
-// Make pop-up visible
+// Make pop-up window visible
 function enableForm() {
   switchClass('form-container-disabled', 'form-container-enabled');
   clearFormContent();
 
-  // Let the cancel button make the form invisible
+  // The cancel button makes the form invisible
   const cancelButton = document.querySelector('#cancel-button');
   cancelButton.addEventListener('click', disableForm);
 }
 
-// Make pop-up invisible
+// Make pop-up window  invisible
 function disableForm() {
   switchClass('form-container-enabled', 'form-container-disabled');
   clearFormContent();
@@ -62,8 +64,11 @@ function addLabelCompleted() {
 
 // Add the submit button when its needed (in the edit and add form)
 function addSubmitButton() {
-  const submitFormButton = document.querySelector('#form-bottom');
-  submitFormButton.innerHTML = '<button id ="submit-form-button">Submit</button>';
+  const submitButtonContainer = document.querySelector('#form-bottom');
+  const submitButton = document.createElement('button');
+  submitButton.id = 'submit-form-button';
+  submitButton.textContent = 'Submit';
+  submitButtonContainer.append(submitButton);
 }
 
 // Remove submit button when its not needed (in the view form)

@@ -15,6 +15,11 @@ class Task {
   }
 }
 
+function createNewObject(category, title, description, note, prioStatus, date, completed) {
+  const taskObject = new Task(category, title, description, note, prioStatus, date, completed);
+  return taskObject;
+}
+
 // Return all tasks as objects so we can work with them
 function convertAllTasks() {
   const tasks = getAllArrayTasks();
@@ -90,5 +95,5 @@ function getImportantTasks() {
 
 export { 
   convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
-  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks
+  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks, createNewObject
 };

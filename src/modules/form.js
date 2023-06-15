@@ -1,6 +1,8 @@
 // create a pop up form to display: view full task info, edit task, add task
 
-import { getFormElements, createViewTaskElements, createInputTaskElements } from './ui';
+import { getFormElements, createViewTaskElements, createInputTaskElements, setAllTaskCounters } from './ui';
+import { createNewObject } from './todo';
+import { addObjectToArray } from './storage';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -69,6 +71,9 @@ function addSubmitButton() {
   submitButton.id = 'submit-form-button';
   submitButton.textContent = 'Submit';
   submitButtonContainer.append(submitButton);
+  submitButton.addEventListener('click', () => {
+    console.log('clicked');
+  })
 }
 
 // Remove submit button when its not needed (in the view form)
@@ -206,7 +211,6 @@ function formEditTask(task) {
 
 function formAddTask() {
   enableForm();
-  addSubmitButton();
   removeEditButton();
 
   // Get all content holders
@@ -238,6 +242,18 @@ function formAddTask() {
   contentDate.appendChild(inputDate);
 
   removeLabelCompleted();
+
+  const submitButtonContainer = document.querySelector('#form-bottom');
+  const submitButton = document.createElement('button');
+  submitButton.id = 'submit-form-button';
+  submitButton.textContent = 'Submit';
+  submitButtonContainer.append(submitButton);
+  submitButton.addEventListener('click', () => {
+    const newTask = createNewObject(inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
+    addObjectToArray(newTask);
+    disableForm();
+    setAllTaskCounters();
+  })
 }
 
 export { formViewTask, formEditTask, formAddTask }

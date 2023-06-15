@@ -13,6 +13,11 @@ const tasks = [
   ['Household', 'Schoonmaken', 'Maak de badkamer en keuken schoon', '', 'low', '2023-06-08', false],
   ['Hobbies', 'Koken', 'Probeer een nieuw recept uit', 'Mexicaanse tacos', 'high', '2023-09-10', false]
 ];
+
+function addObjectToArray(task){
+  const newTask = [task.category, task.title, task.description, task.note, task.prioStatus, task.date, task.completed];
+  tasks.push(newTask);
+}
    
 function getAllArrayTasks() {
 return tasks;
@@ -31,5 +36,5 @@ function deleteTask() {
 }
 
 export {
-getAllArrayTasks, editTask, addTask, deleteTask,
+getAllArrayTasks, editTask, addTask, deleteTask, addObjectToArray
 };

@@ -2,7 +2,7 @@
 
 import { getFormElements, createViewTaskElements, createInputTaskElements, setAllTaskCounters } from './ui';
 import { createNewObject } from './todo';
-import { addObjectToArray } from './storage';
+import { addObjectToArray, editTask, generateId } from './storage';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -62,18 +62,6 @@ function removeLabelCompleted() {
 function addLabelCompleted() {
   const labelCompleted = document.querySelector('#label-task-completed');
   labelCompleted.innerHTML = 'Completed';
-}
-
-// Add the submit button when its needed (in the edit and add form)
-function addSubmitButton() {
-  const submitButtonContainer = document.querySelector('#form-bottom');
-  const submitButton = document.createElement('button');
-  submitButton.id = 'submit-form-button';
-  submitButton.textContent = 'Submit';
-  submitButtonContainer.append(submitButton);
-  submitButton.addEventListener('click', () => {
-    console.log('clicked');
-  })
 }
 
 // Remove submit button when its not needed (in the view form)
@@ -159,7 +147,6 @@ function formViewTask(task) {
 function formEditTask(task) {
   enableForm();
   addLabelCompleted();
-  addSubmitButton();
   removeEditButton();
 
   // Get all content holders
@@ -203,6 +190,18 @@ function formEditTask(task) {
   contentPrioStatus.appendChild(inputPrioStatus);
   contentDate.appendChild(inputDate);
   contentCompleted.appendChild(inputCompleted);
+
+  const submitButtonContainer = document.querySelector('#form-bottom');
+  const submitButton = document.createElement('button');
+  submitButton.id = 'submit-form-button';
+  submitButton.textContent = 'Submit';
+  submitButtonContainer.append(submitButton);
+  submitButton.addEventListener('click', (e) => {
+    // e.preventDefault();
+    editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
+    disableForm();
+  })
+
 }
 
 
@@ -249,7 +248,7 @@ function formAddTask() {
   submitButton.textContent = 'Submit';
   submitButtonContainer.append(submitButton);
   submitButton.addEventListener('click', () => {
-    const newTask = createNewObject(inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
+    const newTask = createNewObject(generateId(), inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
     addObjectToArray(newTask);
     disableForm();
     setAllTaskCounters();

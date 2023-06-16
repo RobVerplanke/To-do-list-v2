@@ -1,4 +1,5 @@
 import { formViewTask, formEditTask } from './form';
+import { removeTask } from './storage';
 import { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
   getNumberOfSportsTasks, getNumberOfHobbiesTasks 
@@ -125,6 +126,8 @@ function printTasks(selectedObjects) {
     // Open form when clicked
     taskTitle.addEventListener('click', () => formViewTask(task));
     taskEditButton.addEventListener('click', () => formEditTask(task));
+    taskDeleteButton.addEventListener('click', () => removeTask(task.id));
+
     
     // Add all new elements to the list element
     taskCheckboxHolder.append(taskCheckbox);

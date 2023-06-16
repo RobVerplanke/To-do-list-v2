@@ -1,40 +1,146 @@
 
-// Stores all tasks in the format: category, title, description, note, prio status, date, completed
+// Stores all tasks in the format: unique id, category, title, description, note, prio status, date, completed
 
-const tasks = [
-  ['Household', 'Oud papier weg gooien', 'Naar recycling container brengen', 'Vergeet niet het oud papier uit de rommelkamer mee te nemen', 'low', '2023-06-14', true],
-  ['Hobbies', 'Gitaar spelen', 'Leer de mineur toonladder', 'over de hele nek van de gitaar', 'normal', '2023-10-01', true],
-  ['Projects', 'Javascript leren', 'Leer Javascript, CSS, programmeren in modules', 'En nieuwe technieken', 'high', '2024-01-01', false],
-  ['Sports', 'Hardlopen', 'Ren 5 kilometer', '', 'normal', '2023-06-06', false],
-  ['Household', 'Boodschappen doen', 'Koop melk, brood en eieren', '', 'high', '2023-06-08', false],
-  ['Hobbies', 'Schilderen', 'Maak een landschapsschilderij', 'Met olieverf', 'low', '2023-09-20', true],
-  ['Projects', 'Website ontwerpen', 'Ontwerp de lay-out voor een nieuwe website', 'Maak het responsief', 'normal', '2023-12-05', false],
-  ['Sports', 'Yoga', 'Doe een 30-minuten durende yogasessie', '', 'normal', '2023-06-09', true],
-  ['Household', 'Schoonmaken', 'Maak de badkamer en keuken schoon', '', 'low', '2023-06-08', false],
-  ['Hobbies', 'Koken', 'Probeer een nieuw recept uit', 'Mexicaanse tacos', 'high', '2023-09-10', false]
+import { setAllTaskCounters } from './ui';
+
+let tasks = [
+  {
+    id: 1,
+    category: 'Household',
+    title: 'Oud papier weg gooien',
+    description: 'Naar recycling container brengen',
+    note: 'Vergeet niet het oud papier uit de rommelkamer mee te nemen',
+    prioStatus: 'low',
+    date: '2023-06-14',
+    completed: true
+  },
+  {
+    id: 2,
+    category: 'Hobbies',
+    title: 'Gitaar spelen',
+    description: 'Leer de mineur toonladder',
+    note: 'over de hele nek van de gitaar',
+    prioStatus: 'normal',
+    date: '2023-10-01',
+    completed: true
+  },
+  {
+    id: 3,
+    category: 'Projects',
+    title: 'Javascript leren',
+    description: 'Leer Javascript, CSS, programmeren in modules',
+    note: 'En nieuwe technieken',
+    prioStatus: 'high',
+    date: '2024-01-01',
+    completed: false
+  },
+  {
+    id: 4,
+    category: 'Sports',
+    title: 'Hardlopen',
+    description: 'Ren 5 kilometer',
+    note: '',
+    prioStatus: 'normal',
+    date: '2023-06-06',
+    completed: false
+  },
+  {
+    id: 5,
+    category: 'Household',
+    title: 'Boodschappen doen',
+    description: 'Koop melk, brood en eieren',
+    note: '',
+    prioStatus: 'high',
+    date: '2023-06-08',
+    completed: false
+  },
+  {
+    id: 6,
+    category: 'Hobbies',
+    title: 'Schilderen',
+    description: 'Maak een landschapsschilderij',
+    note: 'Met olieverf',
+    prioStatus: 'low',
+    date: '2023-09-20',
+    completed: true
+  },
+  {
+    id: 7,
+    category: 'Projects',
+    title: 'Website ontwerpen',
+    description: 'Ontwerp de lay-out voor een nieuwe website',
+    note: 'Maak het responsief',
+    prioStatus: 'normal',
+    date: '2023-12-05',
+    completed: false
+  },
+  {
+    id: 8,
+    category: 'Sports',
+    title: 'Yoga',
+    description: 'Doe een 30-minuten durende yogasessie',
+    note: '',
+    prioStatus: 'normal',
+    date: '2023-06-09',
+    completed: true
+  },
+  {
+    id: 9,
+    category: 'Household',
+    title: 'Schoonmaken',
+    description: 'Maak de badkamer en keuken schoon',
+    note: '',
+    prioStatus: 'low',
+    date: '2023-06-08',
+    completed: false
+  },
+  {
+    id: 10,
+    category: 'Hobbies',
+    title: 'Koken',
+    description: 'Probeer een nieuw recept uit',
+    note: 'Mexicaanse tacos',
+    prioStatus: 'high',
+    date: '2023-09-10',
+    completed: false
+  }
 ];
 
+
+function generateId(){
+  return Date.now();
+}
+
 function addObjectToArray(task){
-  const newTask = [task.category, task.title, task.description, task.note, task.prioStatus, task.date, task.completed];
-  tasks.push(newTask);
+  tasks.push(task);
 }
    
 function getAllArrayTasks() {
 return tasks;
 }
 
-function editTask() {
-// edit task
+function editTask(id, inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted) {
+  const selectedTask = tasks.filter(task => task.id === id);
+  selectedTask.category = inputCat;
+  selectedTask.title = inputTitle;
+  selectedTask.description = inputDescription;
+  selectedTask.note = inputNote;
+  selectedTask.prioStatus = inputPrioStatus;
+  selectedTask.date = inputDate;
+  selectedTask.completed = inputCompleted; 
 }
+
 
 function addTask() {
 // add task
 }
 
-function deleteTask() {
-// delete task
+function removeTask(id) {
+  tasks = tasks.filter(task => task.id !== id);
+  setAllTaskCounters();
 }
 
+
 export {
-getAllArrayTasks, editTask, addTask, deleteTask, addObjectToArray
+getAllArrayTasks, editTask, addTask, removeTask, addObjectToArray, generateId
 };

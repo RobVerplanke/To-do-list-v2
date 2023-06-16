@@ -4,7 +4,8 @@ import { clearMainContent, printTasks, setTitle } from './ui';
 
 // The task object
 class Task {
-  constructor(category, title, description, note, prioStatus, date, completed) {
+  constructor(id, category, title, description, note, prioStatus, date, completed) {
+    this.id = id;
     this.category = category;
     this.title = title;
     this.description = description;
@@ -15,40 +16,25 @@ class Task {
   }
 }
 
-function createNewObject(category, title, description, note, prioStatus, date, completed) {
-  const taskObject = new Task(category, title, description, note, prioStatus, date, completed);
+function createNewObject(id, category, title, description, note, prioStatus, date, completed) {
+  const taskObject = new Task(id, category, title, description, note, prioStatus, date, completed);
   return taskObject;
-}
-
-// Return all tasks as objects so we can work with them
-function convertAllTasks() {
-  const tasks = getAllArrayTasks();
-  const taskObjects = [];
-  
-  // Create an object for each task in the storage array
-  tasks.forEach((task) => {
-    const taskObject = new Task(...task);
-    taskObjects.push(taskObject);
-  });
-
-  return taskObjects;
 }
 
 // Customized function to filter the selected tasks
 function filterTasks(condition){
   const today = new Date();
-  const taskList = convertAllTasks();
+  const taskList = getAllArrayTasks();
   const tasksFiltered = taskList.filter(condition);
   return tasksFiltered;
 }
-
 
 // Get tasks
 
 function getAllObjectTasks(){
   clearMainContent();
   setTitle('All tasks');
-  printTasks(convertAllTasks());
+  printTasks(getAllArrayTasks());
 }
 
 function getTodaysTasks() {
@@ -94,6 +80,6 @@ function getImportantTasks() {
  }
 
 export { 
-  convertAllTasks, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks, createNewObject
 };

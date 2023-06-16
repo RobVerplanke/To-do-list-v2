@@ -31,55 +31,69 @@ function filterTasks(condition){
 
 // Get tasks
 
+let selectedCategory = 'Projects';
+
+function getSelectedCategory(){
+  return selectedCategory;
+}
+
 function getAllObjectTasks(){
   clearMainContent();
   setTitle('All tasks');
   printTasks(getAllArrayTasks());
+  selectedCategory = 'All tasks';
 }
 
 function getTodaysTasks() {
   clearMainContent();
   setTitle('Todays tasks');
   printTasks(filterTasks((task) => isToday(parseISO(task.date))));
+  selectedCategory = 'Todays tasks';
 }
 
 function getThisWeeksTasks() {
   clearMainContent();
   setTitle('This weeks tasks');
   printTasks(filterTasks((task) => isThisWeek(parseISO(task.date))));
+  selectedCategory = 'This weeks tasks';
 }
 
 function getImportantTasks() {
   clearMainContent();
   setTitle('Important tasks');
   printTasks(filterTasks((task) => task.prioStatus === true));
+  selectedCategory = 'Important tasks';
 }
 
  function getProjectsTasks(){
   clearMainContent();
   setTitle('Projects');
   printTasks(filterTasks((task) => task.category === 'Projects'));
+  selectedCategory = 'Projects';
  }
 
  function getHouseholdTasks(){
   clearMainContent();
   setTitle('Household');
   printTasks(filterTasks((task) => task.category === 'Household'));
+  selectedCategory = 'Household';
  }
  
  function getSportsTasks(){
   clearMainContent();
   setTitle('Sports');
   printTasks(filterTasks((task) => task.category === 'Sports'));
+  selectedCategory = 'Sports';
  }
  
  function getHobbiesTasks(){
   clearMainContent();
   setTitle('Hobbies');
   printTasks(filterTasks((task) => task.category === 'Hobbies'));
+  selectedCategory = 'Hobbies';
  }
 
 export { 
   getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
-  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks, createNewObject
+  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks, createNewObject, getSelectedCategory
 };

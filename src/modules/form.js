@@ -1,8 +1,11 @@
 // create a pop up form to display: view full task info, edit task, add task
 
 import { getFormElements, createViewTaskElements, createInputTaskElements, setAllTaskCounters } from './ui';
-import { createNewObject } from './todo';
 import { addObjectToArray, editTask, generateId } from './storage';
+import { 
+  createNewObject, getSelectedCategory, getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
+  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 
+} from './todo';
 
 // Function to easily switch between visible/invisible class
 function switchClass(oldClass, newClass){
@@ -89,6 +92,16 @@ function AddEditButton(task){
   }
 }
 
+function reloadTasks(){
+  if(getSelectedCategory() === 'All tasks') getAllObjectTasks();
+  if(getSelectedCategory() === 'Todays tasks') getTodaysTasks();
+  if(getSelectedCategory() === 'This weeks tasks') getThisWeeksTasks();
+  if(getSelectedCategory() === 'Important tasks') getImportantTasks();
+  if(getSelectedCategory() === 'Projects') getProjectsTasks();
+  if(getSelectedCategory() === 'Household') getHouseholdTasks();
+  if(getSelectedCategory() === 'Sports') getSportsTasks();
+  if(getSelectedCategory() === 'Hobbies') getHobbiesTasks();
+}
 
 // View the details of a task
 
@@ -200,6 +213,8 @@ function formEditTask(task) {
     // e.preventDefault();
     editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
     disableForm();
+    reloadTasks()
+
   })
 
 }
@@ -252,7 +267,8 @@ function formAddTask() {
     addObjectToArray(newTask);
     disableForm();
     setAllTaskCounters();
+    reloadTasks()
   })
 }
 
-export { formViewTask, formEditTask, formAddTask }
+export { formViewTask, formEditTask, formAddTask, reloadTasks }

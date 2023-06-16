@@ -120,7 +120,7 @@ return tasks;
 }
 
 function editTask(id, inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted) {
-  const selectedTask = tasks.filter(task => task.id === id);
+  const selectedTask = tasks.filter(task => task.id === id)[0];
   selectedTask.category = inputCat;
   selectedTask.title = inputTitle;
   selectedTask.description = inputDescription;
@@ -137,6 +137,8 @@ function addTask() {
 
 function removeTask(id) {
   tasks = tasks.filter(task => task.id !== id);
+
+  // Update the task counters on the nav buttons
   setAllTaskCounters();
 }
 

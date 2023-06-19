@@ -116,6 +116,7 @@ function formEditTask(task) {
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
     editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, inputCompleted.checked);
+    setAllTaskCounters();
     disableForm();
     reloadTasks();
   })

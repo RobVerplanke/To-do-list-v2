@@ -22,7 +22,7 @@ let tasks = [
     description: 'Leer de mineur toonladder',
     note: 'over de hele nek van de gitaar',
     prioStatus: 'normal',
-    date: '2023-10-01',
+    date: '2023-07-01',
     completed: true
   },
   {
@@ -32,7 +32,7 @@ let tasks = [
     description: 'Leer Javascript, CSS, programmeren in modules',
     note: 'En nieuwe technieken',
     prioStatus: 'high',
-    date: '2024-01-01',
+    date: '2024-01-22',
     completed: false
   },
   {
@@ -42,7 +42,7 @@ let tasks = [
     description: 'Ren 5 kilometer',
     note: '',
     prioStatus: 'normal',
-    date: '2023-06-06',
+    date: '2023-06-23',
     completed: false
   },
   {
@@ -52,7 +52,7 @@ let tasks = [
     description: 'Koop melk, brood en eieren',
     note: '',
     prioStatus: 'high',
-    date: '2023-06-08',
+    date: '2023-06-21',
     completed: false
   },
   {
@@ -72,7 +72,7 @@ let tasks = [
     description: 'Ontwerp de lay-out voor een nieuwe website',
     note: 'Maak het responsief',
     prioStatus: 'normal',
-    date: '2023-12-05',
+    date: '2023-06-19',
     completed: false
   },
   {
@@ -82,7 +82,7 @@ let tasks = [
     description: 'Doe een 30-minuten durende yogasessie',
     note: '',
     prioStatus: 'normal',
-    date: '2023-06-09',
+    date: '2023-06-18',
     completed: true
   },
   {
@@ -92,7 +92,7 @@ let tasks = [
     description: 'Maak de badkamer en keuken schoon',
     note: '',
     prioStatus: 'low',
-    date: '2023-06-08',
+    date: '2023-06-18',
     completed: false
   },
   {
@@ -102,7 +102,7 @@ let tasks = [
     description: 'Probeer een nieuw recept uit',
     note: 'Mexicaanse tacos',
     prioStatus: 'high',
-    date: '2023-09-10',
+    date: '2023-06-25',
     completed: false
   }
 ];
@@ -132,11 +132,17 @@ function editTask(id, inputCat, inputTitle, inputDescription, inputNote, inputPr
 }
 
 function removeTask(id) {
-  tasks = tasks.filter(task => task.id !== id);
+  // Ask for confirmation
+  const confirmed = confirm("Are you sure you want to delete this task?");
 
-  // Update the task counters and the tasklist in the main area
-  setAllTaskCounters();
-  reloadTasks()
+  // If confirmed, delete the task
+  if (confirmed) {
+    tasks = tasks.filter(task => task.id !== id);
+
+    // Update de task counter and update the task list
+    setAllTaskCounters();
+    reloadTasks();
+  }
 }
 
 

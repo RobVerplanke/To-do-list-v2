@@ -69,7 +69,7 @@ function getImportantTasks() {
   selectedCategory = 'Important tasks';
   clearMainContent();
   setTitle('Important tasks');
-  printTasks(filterTasks((task) => task.prioStatus === true));
+  printTasks(filterTasks((task) => task.prioStatus === 'high'));
 }
 
 function getProjectsTasks(){

@@ -23,7 +23,7 @@ function getNumberOfAllTasks() {
   
   function getNumberOfImportantTasks() {
     const tasks = getAllArrayTasks();
-    const filteredTasks = tasks.filter((task) => task.prioStatus === true);
+    const filteredTasks = tasks.filter((task) => task.prioStatus === 'high');
     return filteredTasks.length;
   }
   

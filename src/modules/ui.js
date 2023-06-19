@@ -137,7 +137,7 @@ function printTasks(selectedObjects) {
     if (task.prioStatus === 'high') setPrioClass(taskTitle, 'high');
     if (task.completed === true) setCompletedClass(taskTitle);
 
-    taskDescription.innerHTML = task.description;
+    taskDescription.innerHTML = `${task.description} <br> ${task.date}`;
 
     //  Add edit- and delete button icons imported from Google Fonts
     taskEditButton.innerHTML = '<span class="material-symbols-outlined" title="Edit task">edit_note</span>';
@@ -194,11 +194,14 @@ function createInputTaskElements() {
   const inputCat = createInputElement('input', '#input-task-cat', 'text');
   const inputTitle = createInputElement('input', '#input-task-title', 'text');
   const inputDescription = createInputElement('input', '#input-task-desc', 'text');
-  const inputNote = createInputElement('input', '#input-task-note', 'text');
+  const inputNote = document.createElement('textarea');
   const inputPrioStatus = document.createElement('select');
   const inputDate = createInputElement('input', '#input-task-date', 'text');
   const inputCompleted = createFormElement('input', '#view-task-completed');
   
+  inputNote.classList.add('input-task-note');
+
+  // Set the options for the 'priority' drop-down selection
   inputPrioStatus.classList.add('input-task-prio');
   const optionsPrioStatusLow = document.createElement('option');
   optionsPrioStatusLow.value = 'low';

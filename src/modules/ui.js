@@ -195,9 +195,26 @@ function createInputTaskElements() {
   const inputTitle = createInputElement('input', '#input-task-title', 'text');
   const inputDescription = createInputElement('input', '#input-task-desc', 'text');
   const inputNote = createInputElement('input', '#input-task-note', 'text');
-  const inputPrioStatus = createInputElement('input', '#input-task-prio', 'text');
+  const inputPrioStatus = document.createElement('select');
   const inputDate = createInputElement('input', '#input-task-date', 'text');
   const inputCompleted = createFormElement('input', '#view-task-completed');
+  
+  inputPrioStatus.classList.add('input-task-prio');
+  const optionsPrioStatusLow = document.createElement('option');
+  optionsPrioStatusLow.value = 'low';
+  optionsPrioStatusLow.text = 'Low';
+
+  const optionsPrioStatusNormal = document.createElement('option');
+  optionsPrioStatusNormal.value = 'normal';
+  optionsPrioStatusNormal.text = 'Normal';
+
+  const optionsPrioStatusHigh = document.createElement('option');
+  optionsPrioStatusHigh.value = 'high';
+  optionsPrioStatusHigh.text = 'High';
+
+  inputPrioStatus.appendChild(optionsPrioStatusLow);
+  inputPrioStatus.appendChild(optionsPrioStatusNormal);
+  inputPrioStatus.appendChild(optionsPrioStatusHigh);
 
   return { inputCat, inputTitle, inputDescription, inputNote, inputPrioStatus, inputDate, inputCompleted }
 }

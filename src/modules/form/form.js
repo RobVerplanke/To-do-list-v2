@@ -115,7 +115,7 @@ function formEditTask(task) {
   const submitButton = createSubmitButton();
   submitButton.addEventListener('click', (e) => {
     // e.preventDefault();
-    editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
+    editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, inputCompleted.checked);
     disableForm();
     reloadTasks();
   })

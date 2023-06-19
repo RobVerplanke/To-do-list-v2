@@ -114,7 +114,7 @@ function formEditTask(task) {
   
   const submitButton = createSubmitButton();
   submitButton.addEventListener('click', (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     editTask(task.id, inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, inputCompleted.checked);
     disableForm();
     reloadTasks();
@@ -158,7 +158,8 @@ function formAddTask() {
 
 
   const submitButton = createSubmitButton();
-  submitButton.addEventListener('click', () => {
+  submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
     const newTask = createNewObject(generateId(), inputCat.value, inputTitle.value, inputDescription.value, inputNote.value, inputPrioStatus.value, inputDate.value, false);
     addObjectToArray(newTask);
     disableForm();

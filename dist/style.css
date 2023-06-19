@@ -180,6 +180,18 @@ input[type="text"] {
     margin-left: 5px;
 }
 
+.low{
+    color: var(--light-text-color);
+}
+
+.normal{
+    font-weight: 700;
+}
+
+.high{
+    color: #EB6440;
+}
+
 .task-counter{
     color: var(--light-text-color);
 }

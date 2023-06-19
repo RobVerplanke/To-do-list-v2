@@ -46,6 +46,14 @@ function setTitle(title){
     mainTitle.innerHTML = title;
 }
 
+function setPrioClass(taskTitle, status){
+  taskTitle.classList.add(status);
+}
+
+function setCompletedClass(taskTitle){
+  taskTitle.style.setProperty("text-decoration", "line-through");
+}
+
 // Get all counter holders and set its content after the page is loaded
 function setAllTaskCounters() {
   const counterAll = document.querySelector('#task-count-all');
@@ -121,8 +129,14 @@ function printTasks(selectedObjects) {
       setCompletedStatus(task, taskCheckbox.checked);
     });
 
-    // Set content of title and description
+    // Set content
     taskTitle.innerHTML = task.title;
+
+    if (task.prioStatus === 'low') setPrioClass(taskTitle, 'low');
+    if (task.prioStatus === 'normal') setPrioClass(taskTitle, 'normal');
+    if (task.prioStatus === 'high') setPrioClass(taskTitle, 'high');
+    if (task.completed === true) setCompletedClass(taskTitle);
+
     taskDescription.innerHTML = task.description;
 
     //  Add edit- and delete button icons imported from Google Fonts

@@ -2,7 +2,7 @@
 // Stores all tasks in the format: unique id, category, title, description, note, prio status, date, completed
 
 import { setAllTaskCounters } from './ui';
-import { reloadTasks } from './form';
+import { reloadTasks } from './form/form';
 
 let tasks = [
   {
@@ -134,7 +134,7 @@ function editTask(id, inputCat, inputTitle, inputDescription, inputNote, inputPr
 function removeTask(id) {
   tasks = tasks.filter(task => task.id !== id);
 
-  // Update the task counters on the nav buttons
+  // Update the task counters and the tasklist in the main area
   setAllTaskCounters();
   reloadTasks()
 }

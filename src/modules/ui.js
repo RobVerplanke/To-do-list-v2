@@ -1,4 +1,5 @@
-import { formViewTask, formEditTask } from './form';
+import { formViewTask, formEditTask } from './form/form';
+import { setCompletedStatus } from './todo';
 import { removeTask } from './storage';
 import { 
   getNumberOfAllTasks, getNumberOfTodaysTasks, getNumberOfThisWeeksTasks, getNumberOfImportantTasks, getNumberOfProjectsTasks, getNumberOfHouseholdTasks,
@@ -114,6 +115,11 @@ function printTasks(selectedObjects) {
     // If task is completed, check the checkbox
     taskCheckbox.type = 'checkbox';
     taskCheckbox.checked = task.completed;
+
+    // Change the 'completed' status of a task
+    taskCheckbox.addEventListener('change', () => {
+      setCompletedStatus(task, taskCheckbox.checked);
+    });
 
     // Set content of title and description
     taskTitle.innerHTML = task.title;

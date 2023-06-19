@@ -1,6 +1,9 @@
 import { isToday, isThisWeek, parseISO } from 'date-fns';
 import { getAllArrayTasks } from './storage';
 import { clearMainContent, printTasks, setTitle } from './ui';
+import { reloadTasks } from './form/form';
+
+let selectedCategory = 'Projects';
 
 // The task object
 class Task {
@@ -29,71 +32,75 @@ function filterTasks(condition){
   return tasksFiltered;
 }
 
-// Get tasks
-
-let selectedCategory = 'Projects';
-
 function getSelectedCategory(){
   return selectedCategory;
 }
 
+function setCompletedStatus(task, newStatus) {
+  task.completed = newStatus;
+  reloadTasks();
+}
+
+
+// Get tasks by category
+
 function getAllObjectTasks(){
+  selectedCategory = 'All tasks';
   clearMainContent();
   setTitle('All tasks');
   printTasks(getAllArrayTasks());
-  selectedCategory = 'All tasks';
 }
 
 function getTodaysTasks() {
+  selectedCategory = 'Todays tasks';
   clearMainContent();
   setTitle('Todays tasks');
   printTasks(filterTasks((task) => isToday(parseISO(task.date))));
-  selectedCategory = 'Todays tasks';
 }
 
 function getThisWeeksTasks() {
+  selectedCategory = 'This weeks tasks';
   clearMainContent();
   setTitle('This weeks tasks');
   printTasks(filterTasks((task) => isThisWeek(parseISO(task.date))));
-  selectedCategory = 'This weeks tasks';
 }
 
 function getImportantTasks() {
+  selectedCategory = 'Important tasks';
   clearMainContent();
   setTitle('Important tasks');
   printTasks(filterTasks((task) => task.prioStatus === true));
-  selectedCategory = 'Important tasks';
 }
 
- function getProjectsTasks(){
+function getProjectsTasks(){
+  selectedCategory = 'Projects';
   clearMainContent();
   setTitle('Projects');
   printTasks(filterTasks((task) => task.category === 'Projects'));
-  selectedCategory = 'Projects';
  }
 
  function getHouseholdTasks(){
+  selectedCategory = 'Household';
   clearMainContent();
   setTitle('Household');
   printTasks(filterTasks((task) => task.category === 'Household'));
-  selectedCategory = 'Household';
  }
  
  function getSportsTasks(){
+  selectedCategory = 'Sports';
   clearMainContent();
   setTitle('Sports');
   printTasks(filterTasks((task) => task.category === 'Sports'));
-  selectedCategory = 'Sports';
  }
  
  function getHobbiesTasks(){
+  selectedCategory = 'Hobbies';
   clearMainContent();
   setTitle('Hobbies');
   printTasks(filterTasks((task) => task.category === 'Hobbies'));
-  selectedCategory = 'Hobbies';
  }
 
 export { 
-  getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
-  getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks, createNewObject, getSelectedCategory
+  getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, getProjectsTasks, getHouseholdTasks, 
+  getSportsTasks, getHobbiesTasks, createNewObject, getSelectedCategory, setCompletedStatus
 };

@@ -1,5 +1,5 @@
 import { getAllElements } from './ui';
-import { formAddTask } from './form';
+import { formAddTask } from './form/form';
 import { 
   getAllObjectTasks, getTodaysTasks, getThisWeeksTasks, getImportantTasks, 
   getProjectsTasks, getHouseholdTasks, getSportsTasks, getHobbiesTasks 

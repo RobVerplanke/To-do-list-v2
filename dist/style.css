@@ -121,7 +121,7 @@ input[type="text"] {
 #main{
     background-color: var(--main-backgroundcolor);
     height: 100%;
-    padding: 50px 0 0 100px;
+    padding: 20px 0 0 100px;
 }
 
 #footer{

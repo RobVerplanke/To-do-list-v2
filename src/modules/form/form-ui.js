@@ -1,13 +1,13 @@
-    import { getFormElements } from '../ui';
-    import { formEditTask } from './form';
+import { getFormElements } from '../ui';
+import { formEditTask } from './form';
 
 
-    // Function to easily switch between visible/invisible class
-    function switchClass(oldClass, newClass){
-        const formContainer = document.querySelector('#form-container');
-        formContainer.classList.remove(oldClass);
-        formContainer.classList.add(newClass);
-  }
+// Function to easily switch between visible/invisible class
+function switchClass(oldClass, newClass){
+    const formContainer = document.querySelector('#form-container');
+    formContainer.classList.remove(oldClass);
+    formContainer.classList.add(newClass);
+}
 
 // Clear content (and submit button)
 function clearFormContent() {
@@ -34,14 +34,22 @@ function clearFormContent() {
     submitButtonContainer.innerHTML = '';
 }
 
+// Add the submit button when its needed (in the edit and add form)
 function createSubmitButton() {
     const submitButtonContainer = document.querySelector('#form-bottom');
     const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
     submitButton.id = 'submit-form-button';
     submitButton.textContent = 'Submit';
     submitButtonContainer.append(submitButton);
     
     return submitButton;
+}
+
+// Remove submit button when its not needed (in the view form)
+function removeSubmitButton() {
+    const submitFormButton = document.querySelector('#form-bottom');
+    submitFormButton.innerHTML = '';
 }
 
 // Make pop-up window visible
@@ -70,12 +78,6 @@ function removeLabelCompleted() {
 function addLabelCompleted() {
     const labelCompleted = document.querySelector('#label-task-completed');
     labelCompleted.innerHTML = 'Completed';
-}
-
-// Remove submit button when its not needed (in the view form)
-function removeSubmitButton() {
-    const submitFormButton = document.querySelector('#form-bottom');
-    submitFormButton.innerHTML = '';
 }
 
 // Remove edit button when its not needed (in the edit and add form)

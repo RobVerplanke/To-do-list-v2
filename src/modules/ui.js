@@ -199,6 +199,9 @@ function createInputTaskElements() {
   const inputDate = createInputElement('input', '#input-task-date', 'text');
   const inputCompleted = createFormElement('input', '#view-task-completed');
   
+  inputTitle.setAttribute('required', '');
+  inputDate.setAttribute('required', '');
+
   inputNote.classList.add('input-task-note');
 
   // Set the options for the 'priority' drop-down selection
